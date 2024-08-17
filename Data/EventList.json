@@ -1,0 +1,280 @@
+{
+    "Events": {
+        "Market": [
+            {
+                "Name": "Launch advertisement campaign",
+                "PurchaseCost": 3,
+                "Effects": [
+                    {
+                        "Type": "Demand",
+                        "Change": 1
+                    },
+                    {
+                        "Type": "Competitors",
+                        "Change": -1
+                    }
+                ]
+            },
+            {
+                "Name": "Sell with a loss",
+                "PurchaseCost": 2,
+                "Effects": [
+                    {
+                        "Type": "Demand",
+                        "Change": 2
+                    },
+                    {
+                        "Type": "Competitors",
+                        "Change": -1
+                    },
+                    {
+                        "Type": "Revenue",
+                        "Change": 0.6
+                    }
+                ]
+            },
+            {
+                "Name": "Hire local gang to sabotage a competitor",
+                "PurchaseCost": 4,
+                "Effects": [
+                    {
+                        "Type": "Competitors",
+                        "Change": -2
+                    },
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": -1
+                    }
+                ]
+            },
+            {
+                "Name": "Manipulate the market",
+                "PurchaseCost": 5,
+                "Effects": [
+                    {
+                        "Type": "Demand",
+                        "Change": 3
+                    },
+                    {
+                        "Type": "Competitors",
+                        "Change": -1
+                    }
+                ]
+            },
+            {
+                "Name": "Gain supply exclusivity",
+                "PurchaseCost": 4,
+                "Effects": [
+                    {
+                        "Type": "Demand",
+                        "Change": 2
+                    },
+                    {
+                        "Type": "Competitors",
+                        "Change": -1
+                    }
+                ]
+            },
+            {
+                "Name": "Force customer to buy your product in a bundle of several items",
+                "PurchaseCost": 2,
+                "Effects": [
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": -1
+                    },
+                    {
+                        "Type": "Revenue",
+                        "Change": 2
+                    }
+                ]
+            },
+            {
+                "Name": "Focus on high pressure sales tactics",
+                "PurchaseCost": 3,
+                "Effects": [
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": -1
+                    },
+                    {
+                        "Type": "Revenue",
+                        "Change": 2
+                    }
+                ]
+            },
+            {
+                "Name": "Include hidden fees",
+                "PurchaseCost": 2,
+                "Effects": [
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": -2
+                    },
+                    {
+                        "Type": "Revenue",
+                        "Change": 1
+                    }
+                ]
+            },
+            {
+                "Name": "Evade taxes",
+                "PurchaseCost": 4,
+                "Effects": [
+                    {
+                        "Type": "Revenue",
+                        "Change": 3
+                    },
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": -2
+                    }
+                ]
+            },
+            {
+                "Name": "Tamper with scales",
+                "PurchaseCost": 2,
+                "Effects": [
+                    {
+                        "Type": "Revenue",
+                        "Change": 2
+                    },
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": -1
+                    }
+                ]
+            },
+            {
+                "Name": "Tamper with competitor scales and then report it",
+                "PurchaseCost": 3,
+                "Effects": [
+                    {
+                        "Type": "Competitors",
+                        "Change": -2
+                    },
+                    {
+                        "Type": "AreaSatisfaction",
+                        "Change": 1
+                    }
+                ]
+            },
+            {
+                "Name": "Bribe authorities to impose tolls on other merchants",
+                "PurchaseCost": 5,
+                "Effects": [
+                    {
+                        "Type": "Competitors",
+                        "Change": -2
+                    },
+                    {
+                        "Type": "Revenue",
+                        "Change": 1
+                    }
+                ]
+            },
+            {
+                "Name": "Bribe authorities to not let other merchants enter the market",
+                "PurchaseCost": 6,
+                "Effects": [
+                    {
+                        "Type": "Competitors",
+                        "Change": -3
+                    },
+                    {
+                        "Type": "Reputation",
+                        "Change": -2
+                    }
+                ]
+            }
+        ],
+        "Hiring":[
+            {
+                "Name": "Acquire a slave",
+                "Aquisition_Cost": 0.15,
+                "Cost_Per_Cycle": 0,
+                "Cycle_Production_Change": 0.5
+            },
+            {
+                "Name": "Hire a forced laber worker",
+                "Aquisition_Cost": 1,
+                "Cost_Per_Cycle": 0.2,
+                "Cycle_Production_Change": 0.5
+            },
+            {
+                "Name": "Hire a forced laber women worker",
+                "Aquisition_Cost": 0.7,
+                "Cost_Per_Cycle": 0.15,
+                "Cycle_Production_Change": 0.4
+            },
+            {
+                "Name": "Hire a child laber worker",
+                "Aquisition_Cost": 0.6,
+                "Cost_Per_Cycle": 0.1,
+                "Cycle_Production_Change": 0.3
+            },
+            {
+                "Name": "Hire a labourer",
+                "Aquisition_Cost": 1.5,
+                "Cost_Per_Cycle": 0.8,
+                "Cycle_Production_Change": 0.8
+            },
+            {
+                "Name": "Hire a skilled labourer",
+                "Aquisition_Cost": 2,
+                "Cost_Per_Cycle": 1,
+                "Cycle_Production_Change": 1
+            }
+        ],
+        "Workshop": [
+            {
+                "Name": "Use lesser quality materials",
+                "Aquisition_Cost": 1,
+                "Cost_Per_Cycle": -0.5,
+                "Cycle_Production_Change": 0
+            },
+            {
+                "Name": "Use materials harmful to human body",
+                "Aquisition_Cost": 2,
+                "Cost_Per_Cycle": -0.7,
+                "Cycle_Production_Change": 0
+            },
+            {
+                "Name": "Dump waste into streets",
+                "Aquisition_Cost": 1,
+                "Cost_Per_Cycle": -0.1,
+                "Cycle_Production_Change": 0
+            },
+            {
+                "Name": "Use unlicensed intelectual property",
+                "Aquisition_Cost": 1,
+                "Cost_Per_Cycle": 1,
+                "Cycle_Production_Change": 1
+            },
+            {
+                "Name": "Skip on safety training",
+                "Aquisition_Cost": 4,
+                "Cost_Per_Cycle": -1.5,
+                "Cycle_Production_Change": 0
+            },
+            {
+                "Name": "Increase production quotas",
+                "Aquisition_Cost": 5,
+                "Cost_Per_Cycle": 0,
+                "Cycle_Production_Change": 0.5
+            },
+            {
+                "Name": "Forced overtimes",
+                "Aquisition_Cost": 1,
+                "Cost_Per_Cycle": 2,
+                "Cycle_Production_Change": 1
+            },
+            {
+                "Name": "Decrease time of breaks",
+                "Aquisition_Cost": 3,
+                "Cost_Per_Cycle": 0.5,
+                "Cycle_Production_Change": 0.5
+            }
+        ]
+    }
+}
