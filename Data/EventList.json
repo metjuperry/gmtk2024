@@ -188,7 +188,7 @@
 				]
 			}
 		],
-		"Hiring":[
+		"Hiring": [
 			{
 				"Name": "Acquire a slave",
 				"Aquisition_Cost": 0.15,

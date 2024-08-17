@@ -2,15 +2,21 @@ extends Sprite2D
 
 signal cycleComplete()
 
-@export var rotation_speed = 1.5
+
+var spin : bool;
+@export var rotation_speed = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	spin = false;
+	return;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if(!spin):
+		return
 	
 	self.rotation += delta * rotation_speed;
 
@@ -18,3 +24,8 @@ func _process(delta: float) -> void:
 		self.rotation = 0;
 		cycleComplete.emit()
 	pass
+
+
+func _on_node_2d_tutorial_over() -> void:
+	spin = true;
+	pass # Replace with function body.

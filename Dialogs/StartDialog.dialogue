@@ -10,4 +10,6 @@ Fate: {{sold_goods}}! Interesting, back in my days owning {{sold_goods}} was con
 Fate: New, lets get going by pick up your father's business where he left it. 
 do show_tutorial_arrow()
 Fate: Find your father's shop and start managing it.
+Fate: Off you go.
+do tutorial_over()
 => END

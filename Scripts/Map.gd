@@ -1,7 +1,7 @@
 extends Node2D
 
 signal toggleArrow(show: bool)
-
+signal tutorialOver()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,3 +38,5 @@ func ask_for_sold_goods() -> void:
 func show_tutorial_arrow() -> void:
 	get_node("CanvasLayer/Down-arrow").visible = true
 	
+func tutorial_over() -> void:
+	tutorialOver.emit()

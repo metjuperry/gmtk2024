@@ -26,6 +26,7 @@ func renderButtons() -> void:
 		var newButton = Button.new()
 		newButton.text = event["Name"]
 		newButton.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		newButton.pressed.connect(Callable(tryBuyUpgrade).bind(event))
 		var newAcquisitionLabel = Label.new()
 		newAcquisitionLabel.text = "    Aqusition Cost: " + str(event["Aquisition_Cost"])
 		newAcquisitionLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -43,7 +44,9 @@ func renderButtons() -> void:
 		add_child(newDailyCostLabel)
 		add_child(newproductionChangeLabel)
 		
-		
+func tryBuyUpgrade():
+	
+	pass
 	
 func getColor(number: float) -> Color:
 	if number>0:

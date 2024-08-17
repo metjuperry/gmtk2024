@@ -1,84 +1,84 @@
 {
-    "title": "Generated schema for Root",
-    "type": "object",
-    "properties": {
-      "Events": {
-        "type": "object",
-        "properties": {
-          "Market": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "type": "string"
-                },
-                "PurchaseCost": {
-                  "type": "number"
-                },
-                "Effects": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "Type": {
-                        "type": "string",
-                        "enum": ["Competitors","Demand","AreaSatisfaction","Revenue"]
-                      },
-                      "Change": {
-                        "type": "number"
-                      }
-                    },
-                    "required": [
-                      "Type",
-                      "Change"
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "Hiring": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "type": "string"
-                },
-                "Aquisition_Cost": {
-                  "type": "number"
-                },
-                "Cost_Per_Cycle": {
-                  "type": "number"
-                },
-                "Cycle_Production_Change": {
-                  "type": "number"
-                }
-              }
-            }
-          },
-          "Workshop": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "type": "string"
-                },
-                "Aquisition_Cost": {
-                  "type": "number"
-                },
-                "Cost_Per_Cycle": {
-                  "type": "number"
-                },
-                "Cycle_Production_Change": {
-                  "type": "number"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+	"title": "Generated schema for Root",
+	"type": "object",
+	"properties": {
+	  "Events": {
+		"type": "object",
+		"properties": {
+		  "Market": {
+			"type": "array",
+			"items": {
+			  "type": "object",
+			  "properties": {
+				"Name": {
+				  "type": "string"
+				},
+				"PurchaseCost": {
+				  "type": "number"
+				},
+				"Effects": {
+				  "type": "array",
+				  "items": {
+					"type": "object",
+					"properties": {
+					  "Type": {
+						"type": "string",
+						"enum": ["Competitors","Demand","AreaSatisfaction","Revenue"]
+					  },
+					  "Change": {
+						"type": "number"
+					  }
+					},
+					"required": [
+					  "Type",
+					  "Change"
+					]
+				  }
+				}
+			  }
+			}
+		  },
+		  "Hiring": {
+			"type": "array",
+			"items": {
+			  "type": "object",
+			  "properties": {
+				"Name": {
+				  "type": "string"
+				},
+				"Aquisition_Cost": {
+				  "type": "number"
+				},
+				"Cost_Per_Cycle": {
+				  "type": "number"
+				},
+				"Cycle_Production_Change": {
+				  "type": "number"
+				}
+			  }
+			}
+		  },
+		  "Workshop": {
+			"type": "array",
+			"items": {
+			  "type": "object",
+			  "properties": {
+				"Name": {
+				  "type": "string"
+				},
+				"Aquisition_Cost": {
+				  "type": "number"
+				},
+				"Cost_Per_Cycle": {
+				  "type": "number"
+				},
+				"Cycle_Production_Change": {
+				  "type": "number"
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	}
   }
