@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="GMTK2024"
-run/main_scene="res://map.tscn"
+run/main_scene="res://Scenes/StartMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameState="*res://Scripts/Game_State.gd"
+
+[dialogue_manager]
+
+general/states=["GameState"]
 
 [display]
 
