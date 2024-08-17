@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=19 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/TopPanelManager.gd" id="2_kaplx"]
 [ext_resource type="TileSet" uid="uid://djp0cmnfn1xtl" path="res://textures/objects/tiles/tilestileset.tres" id="3_5r71k"]
 [ext_resource type="Script" path="res://Scripts/BuildingSelector.gd" id="3_6ceoe"]
+[ext_resource type="Script" path="res://Scripts/V_Box_Side_Menu.gd" id="4_80x0n"]
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
 [ext_resource type="Texture2D" uid="uid://q44tnul2co3f" path="res://textures/UI/down-arrow.png" id="4_ycten"]
 [ext_resource type="Script" path="res://Scripts/TutorialArrow.gd" id="5_k8y18"]
@@ -31,7 +32,8 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="GDScript" id="GDScript_42n1r"]
-script/source = "extends Button"
+script/source = "extends Button
+"
 
 [sub_resource type="Curve" id="Curve_e27py"]
 min_value = 1.0
@@ -107,6 +109,11 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("4_80x0n")
+
+[node name="Button3" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "aaa"
 
 [node name="Button" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -116,6 +123,17 @@ text = "Press me to skibidi"
 layout_mode = 2
 text = "Press me to dibidi"
 script = SubResource("GDScript_42n1r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="Label" type="Label" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "halo"
 
 [node name="Down-arrow" type="Sprite2D" parent="CanvasLayer"]
 visible = false
