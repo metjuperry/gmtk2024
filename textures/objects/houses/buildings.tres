@@ -7,26 +7,33 @@
 [ext_resource type="Texture2D" uid="uid://bwxm118lih702" path="res://textures/objects/houses/medieval_windmill.png" id="4_ll1si"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5dim"]
+resource_name = "Castle"
 texture = ExtResource("1_vlgf5")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
+0:0/0/custom_data_0 = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uot8"]
+resource_name = "Cabin"
 texture = ExtResource("1_4gf8s")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k8atg"]
+resource_name = "Farm"
 texture = ExtResource("2_7bj4v")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2jafe"]
+resource_name = "House"
 texture = ExtResource("3_chjwx")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
+0:0/0/custom_data_0 = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh30b"]
+resource_name = "Mill"
 texture = ExtResource("4_ll1si")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
@@ -34,6 +41,8 @@ texture_region_size = Vector2i(118, 140)
 [resource]
 tile_shape = 3
 tile_size = Vector2i(118, 140)
+custom_data_layer_0/name = "BuildingType"
+custom_data_layer_0/type = 2
 sources/3 = SubResource("TileSetAtlasSource_0uot8")
 sources/4 = SubResource("TileSetAtlasSource_k8atg")
 sources/5 = SubResource("TileSetAtlasSource_2jafe")

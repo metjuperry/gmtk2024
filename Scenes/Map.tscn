@@ -1,61 +1,66 @@
-[gd_scene load_steps=5 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=7 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
+[ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
 [ext_resource type="Script" path="res://Scripts/Map.gd" id="2_bufl8"]
 [ext_resource type="TileSet" uid="uid://djp0cmnfn1xtl" path="res://textures/objects/tiles/tilestileset.tres" id="3_5r71k"]
+[ext_resource type="Script" path="res://Scripts/BuildingSelector.gd" id="3_6ceoe"]
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
+[node name="TopPanel" type="PanelContainer" parent="CanvasLayer"]
 offset_left = -2.0
 offset_right = 1915.0
 offset_bottom = 85.0
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-offset_left = 1288.0
-offset_top = 93.0
-offset_right = 1911.0
-offset_bottom = 978.0
+[node name="SidePanel" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 1962.0
+offset_top = 106.0
+offset_right = 2585.0
+offset_bottom = 991.0
 theme = ExtResource("1_rpyo6")
+script = ExtResource("2_bpw5m")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SidePanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SidePanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 39
 text = "Ye old shop"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press me to skibidi"
 script = ExtResource("2_bufl8")
 
-[node name="Button2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press me to dibidi"
 
 [node name="Map" type="Node2D" parent="."]
+script = ExtResource("3_6ceoe")
 
 [node name="TerrainTileMap" type="TileMapLayer" parent="Map"]
 tile_map_data = PackedByteArray("AAACAAAAAwAAAAAAAAABAAAAAwAAAAAAAAACAAMAAwAAAAAAAAADAAMAAQAAAAAAAAAGAAUAAwAAAAAAAAAFAAYAAAAAAAAAAAAEAAYAAwAAAAAAAAADAAYAAwAAAAAAAAACAAUAAQAAAAAAAAABAAUAAwAAAAAAAAABAAQAAwAAAAAAAAABAAMAAAAAAAAAAAACAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAAFAAUAAwAAAAAAAAAEAAQAAAAAAAAAAAADAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAADAAQAAwAAAAAAAAACAAIAAwAAAAAAAAABAAIAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAJAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAABAAEAAwAAAAAAAAACAAEAAwAAAAAAAAADAAEAAwAAAAAAAAAKAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAMAAAAAwAAAAAAAAANAAAAAwAAAAAAAAAOAAAAAwAAAAAAAAAPAAAAAwAAAAAAAAAOAAEAAwAAAAAAAAAPAAIAAwAAAAAAAAAOAAMAAwAAAAAAAAAPAAQAAwAAAAAAAAAOAAUAAwAAAAAAAAAPAAYAAwAAAAAAAAAOAAcAAwAAAAAAAAAPAAgAAwAAAAAAAAAOAAkAAwAAAAAAAAANAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAKAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAIAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAADAAkAAwAAAAAAAAACAAkAAwAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAwAAAAAAAAAIAAIAAwAAAAAAAAAHAAIAAQAAAAAAAAAGAAIAAwAAAAAAAAAFAAIAAwAAAAAAAAAEAAIAAQAAAAAAAAADAAIAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAQAAQAAAAAAAAAGAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAIAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAIAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAIAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAIAAwAAAAAAAAANAAEAAwAAAAAAAAAOAAIAAwAAAAAAAAANAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAAKAAQAAwAAAAAAAAAJAAQAAwAAAAAAAAAIAAQAAAAAAAAAAAAHAAUAAwAAAAAAAAAHAAYAAwAAAAAAAAAGAAcAAwAAAAAAAAAFAAcAAwAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAwAAAAAAAAACAAcAAwAAAAAAAAACAAYAAwAAAAAAAAABAAYAAAAAAAAAAAAAAAUAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAkAAwAAAAAAAAABAAgAAAAAAAAAAAABAAcAAwAAAAAAAAACAAgAAwAAAAAAAAABAAkAAwAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAgAAQAAAAAAAAAHAAcAAwAAAAAAAAAIAAYAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAJAAUAAwAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAwAAAAAAAAALAAQAAwAAAAAAAAALAAUAAwAAAAAAAAAMAAQAAwAAAAAAAAAMAAUAAwAAAAAAAAANAAQAAwAAAAAAAAANAAUAAwAAAAAAAAAOAAQAAwAAAAAAAAANAAYAAwAAAAAAAAAMAAYAAwAAAAAAAAALAAYAAwAAAAAAAAAKAAcAAwAAAAAAAAAJAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAALAAgAAwAAAAAAAAALAAcAAwAAAAAAAAAMAAgAAwAAAAAAAAAMAAcAAwAAAAAAAAANAAgAAwAAAAAAAAANAAcAAwAAAAAAAAAOAAYAAwAAAAAAAAAOAAgAAwAAAAAAAAD//wEAAwAAAAAAAAD//wMAAwAAAAAAAAD//wUAAwAAAAAAAAD//wcAAwAAAAAAAAD//wkAAwAAAAAAAAAAAAoAAwAAAAAAAAABAAoAAwAAAAAAAAACAAoAAAAAAAAAAAADAAoAAwAAAAAAAAAEAAoAAwAAAAAAAAAFAAoAAwAAAAAAAAAGAAoAAwAAAAAAAAAHAAoAAwAAAAAAAAAIAAoAAwAAAAAAAAAJAAoAAwAAAAAAAAAKAAoAAwAAAAAAAAALAAoAAwAAAAAAAAAMAAoAAwAAAAAAAAANAAoAAwAAAAAAAAAOAAoAAwAAAAAAAAAPAAoAAwAAAAAAAAAQAAoAAwAAAAAAAAAPAAkAAwAAAAAAAAAQAAgAAwAAAAAAAAAPAAcAAwAAAAAAAAAPAAUAAwAAAAAAAAAPAAMAAwAAAAAAAAAPAAEAAwAAAAAAAAAQAAIAAwAAAAAAAAAQAAQAAwAAAAAAAAAQAAYAAwAAAAAAAAAQAAAAAwAAAAAAAAAGAAYAAQAAAAAAAAA=")
 tile_set = ExtResource("3_5r71k")
 
-[node name="TerrainTileMap2" type="TileMapLayer" parent="Map"]
+[node name="BuildingsTileMap" type="TileMapLayer" parent="Map"]
 tile_map_data = PackedByteArray("AAAEAAQAAwAAAAAAAAAGAAUAAwAAAAAAAAAGAAYAAwAAAAAAAAABAAcABAAAAAAAAAACAAQABAAAAAAAAAAEAAYABQAAAAAAAAAIAAUABgAAAAAAAAAHAAMABgAAAAAAAAAIAAgAAAAAAAAAAAA=")
 tile_set = ExtResource("4_shp4t")
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Button" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
