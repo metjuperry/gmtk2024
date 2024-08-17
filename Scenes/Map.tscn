@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=18 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -8,6 +8,9 @@
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
 [ext_resource type="Texture2D" uid="uid://q44tnul2co3f" path="res://textures/UI/down-arrow.png" id="4_ycten"]
 [ext_resource type="Script" path="res://Scripts/TutorialArrow.gd" id="5_k8y18"]
+[ext_resource type="Texture2D" uid="uid://cm0mhe2fu6vco" path="res://textures/UI/orloj_sipka.png" id="6_i528l"]
+[ext_resource type="Script" path="res://Scripts/orloj.gd" id="7_pa1x4"]
+[ext_resource type="Texture2D" uid="uid://klbaly6dakcb" path="res://textures/UI/minimap_arrow_a.png" id="8_bnsq7"]
 [ext_resource type="Texture2D" uid="uid://cbp8e3d7os23g" path="res://textures/UI/emote_cash.png" id="9_f83jd"]
 [ext_resource type="Script" path="res://Scripts/neworderparticle.gd" id="11_4ur16"]
 
@@ -88,6 +91,18 @@ scale = Vector2(0.204102, 0.223633)
 texture = ExtResource("4_ycten")
 script = ExtResource("5_k8y18")
 
+[node name="Orloj" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(440, 602)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_i528l")
+script = ExtResource("7_pa1x4")
+
+[node name="MinimapArrowA" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(441, 433)
+rotation = 3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("8_bnsq7")
+
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("3_6ceoe")
 metadata/_edit_lock_ = true
@@ -113,6 +128,9 @@ one_shot = true
 speed_scale = 4.0
 script = ExtResource("11_4ur16")
 
+[node name="Node" type="Node" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="Map/NewOrderParticle" method="_on_button_2_pressed"]
+[connection signal="cycleComplete" from="CanvasLayer/Orloj" to="Map/NewOrderParticle" method="_on_orloj_cycle_complete"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
