@@ -25,5 +25,5 @@ func _on_map_selected_building_changed(newSelectedBuilding: int) -> void:
 	if(newSelectedBuilding == 1):
 		label.text = "Ye Old Castle"
 	if(newSelectedBuilding == 2):
-		label.text = "Ye Old Farma"
+		label.text = "Ye Old Blacksmith"
 	pass # Replace with function body.

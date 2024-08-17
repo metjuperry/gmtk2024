@@ -83,7 +83,7 @@ script = SubResource("GDScript_42n1r")
 
 [node name="Down-arrow" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(531, 578)
+position = Vector2(706, 466)
 scale = Vector2(0.204102, 0.223633)
 texture = ExtResource("4_ycten")
 script = ExtResource("5_k8y18")
