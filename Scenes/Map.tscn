@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=23 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cbp8e3d7os23g" path="res://textures/UI/emote_cash.png" id="9_f83jd"]
 [ext_resource type="Script" path="res://Scripts/neworderparticle.gd" id="11_4ur16"]
 [ext_resource type="Script" path="res://Scripts/ResourceCounter.gd" id="14_m63y7"]
-[ext_resource type="Texture2D" uid="uid://dptyrsbqalmis" path="res://textures/objects/houses/character.png" id="14_wihq4"]
+[ext_resource type="Texture2D" uid="uid://dptyrsbqalmis" path="res://textures/character.png" id="14_wihq4"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="18_xkof7"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w8avk"]
 particle_flag_disable_z = true
@@ -197,6 +198,9 @@ workersProductivity = 3.0
 priceModified = 10.0
 demandMetBonus = 2.0
 satisfactionConstant = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("18_xkof7")
 
 [connection signal="tutorialOver" from="." to="CanvasLayer/Orloj" method="_on_node_2d_tutorial_over"]
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
