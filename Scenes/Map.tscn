@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=7 format=4 uid="uid://dlyxvx4t61tww"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("2_bufl8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -45,7 +46,6 @@ layout_mode = 2
 [node name="Button" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press me to skibidi"
-script = ExtResource("2_bufl8")
 
 [node name="Button2" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -62,5 +62,4 @@ tile_set = ExtResource("3_5r71k")
 tile_map_data = PackedByteArray("AAAEAAQAAwAAAAAAAAAGAAUAAwAAAAAAAAAGAAYAAwAAAAAAAAABAAcABAAAAAAAAAACAAQABAAAAAAAAAAEAAYABQAAAAAAAAAIAAUABgAAAAAAAAAHAAMABgAAAAAAAAAIAAgAAAAAAAAAAAA=")
 tile_set = ExtResource("4_shp4t")
 
-[connection signal="pressed" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button" method="_on_pressed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]

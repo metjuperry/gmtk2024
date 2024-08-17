@@ -5,8 +5,13 @@ if another_attempt == false
 	set another_attempt = true
 else
 	Fate: We meet again
-Fate: Your father has passed away due to poor hygiene, your mother left for a merchant in neighboring village and all of your 14 siblings have been recruited to army and saloons. 
+Fate: Your father has passed away due to poor hygiene, your mother left for another merchant in neighboring village and all of your 14 siblings have been recruited to army and saloons. 
 Fate: It's now your responsibility to take care of your fathers' business and making it in new and exciting age of feudal society. What will you sell:
-
-
+Fate: With so much trauma, its not your chance to change who you are. What is your name?
+do ask_for_name()
+Fate: Hi {{player_name}}! It is nice to meet you.
+Fate: Next on our task list is to remember what was you father selling?
+do ask_for_sold_goods()
+Fate: Alright. {{sold_goods}}! What a nasty little man he was.
+Fate: Lets get going by pick up the business where he left it.
 => END
