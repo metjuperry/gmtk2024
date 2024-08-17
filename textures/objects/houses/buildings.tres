@@ -1,10 +1,18 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://26owegk8hj50"]
+[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://26owegk8hj50"]
 
 [ext_resource type="Texture2D" uid="uid://cqlr4mjiylibv" path="res://textures/objects/houses/medieval_cabin.png" id="1_4gf8s"]
 [ext_resource type="Texture2D" uid="uid://d3xyidxbepe24" path="res://textures/objects/houses/medieval_openCastle.png" id="1_vlgf5"]
 [ext_resource type="Texture2D" uid="uid://c8ll4xsquq33e" path="res://textures/objects/houses/medieval_farm.png" id="2_7bj4v"]
+[ext_resource type="Texture2D" uid="uid://c1qkpsp712ty8" path="res://textures/objects/houses/medieval_archway.png" id="2_ewx1c"]
 [ext_resource type="Texture2D" uid="uid://dk4lawyfiskjp" path="res://textures/objects/houses/medieval_house.png" id="3_chjwx"]
+[ext_resource type="Texture2D" uid="uid://ddm3yq31opyo3" path="res://textures/objects/houses/medieval_largeCastle.png" id="4_df6jc"]
 [ext_resource type="Texture2D" uid="uid://bwxm118lih702" path="res://textures/objects/houses/medieval_windmill.png" id="4_ll1si"]
+[ext_resource type="Texture2D" uid="uid://d4imf6ia58r5a" path="res://textures/objects/houses/medieval_lumber.png" id="5_esjya"]
+[ext_resource type="Texture2D" uid="uid://bruv6ikfa3aes" path="res://textures/objects/houses/medieval_mine.png" id="6_85iaw"]
+[ext_resource type="Texture2D" uid="uid://cctsae73wp1p8" path="res://textures/objects/houses/medieval_ruins.png" id="7_vlovd"]
+[ext_resource type="Texture2D" uid="uid://cjsrc3hcn8w5u" path="res://textures/objects/houses/medieval_tower.png" id="8_6fhw1"]
+[ext_resource type="Texture2D" uid="uid://b46ysb5y6m88t" path="res://textures/objects/houses/medieval_blacksmith.png" id="10_0c43h"]
+[ext_resource type="Texture2D" uid="uid://sjhgnclxf2i8" path="res://textures/objects/houses/medieval_church.png" id="13_gw0sh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5dim"]
 resource_name = "Castle"
@@ -12,6 +20,56 @@ texture = ExtResource("1_vlgf5")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
 0:0/0/custom_data_0 = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8t8q"]
+texture = ExtResource("2_ewx1c")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a04k7"]
+texture = ExtResource("3_chjwx")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7srp"]
+texture = ExtResource("4_df6jc")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_arn5w"]
+texture = ExtResource("5_esjya")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_12atv"]
+texture = ExtResource("6_85iaw")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yoyha"]
+texture = ExtResource("1_vlgf5")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h7sir"]
+texture = ExtResource("7_vlovd")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dc887"]
+texture = ExtResource("8_6fhw1")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cu3kq"]
+texture = ExtResource("4_ll1si")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bf342"]
+texture = ExtResource("10_0c43h")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uot8"]
 resource_name = "Cabin"
@@ -38,6 +96,21 @@ texture = ExtResource("4_ll1si")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hm17n"]
+texture = ExtResource("1_4gf8s")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3pyon"]
+texture = ExtResource("13_gw0sh")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwm6k"]
+texture = ExtResource("2_7bj4v")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
 [resource]
 tile_shape = 3
 tile_size = Vector2i(118, 140)
@@ -48,3 +121,16 @@ sources/4 = SubResource("TileSetAtlasSource_k8atg")
 sources/5 = SubResource("TileSetAtlasSource_2jafe")
 sources/6 = SubResource("TileSetAtlasSource_oh30b")
 sources/0 = SubResource("TileSetAtlasSource_r5dim")
+sources/1 = SubResource("TileSetAtlasSource_b8t8q")
+sources/2 = SubResource("TileSetAtlasSource_bf342")
+sources/7 = SubResource("TileSetAtlasSource_hm17n")
+sources/8 = SubResource("TileSetAtlasSource_3pyon")
+sources/9 = SubResource("TileSetAtlasSource_gwm6k")
+sources/10 = SubResource("TileSetAtlasSource_a04k7")
+sources/11 = SubResource("TileSetAtlasSource_s7srp")
+sources/12 = SubResource("TileSetAtlasSource_arn5w")
+sources/13 = SubResource("TileSetAtlasSource_12atv")
+sources/14 = SubResource("TileSetAtlasSource_yoyha")
+sources/15 = SubResource("TileSetAtlasSource_h7sir")
+sources/16 = SubResource("TileSetAtlasSource_dc887")
+sources/17 = SubResource("TileSetAtlasSource_cu3kq")
