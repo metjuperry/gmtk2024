@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=15 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -8,6 +8,33 @@
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
 [ext_resource type="Texture2D" uid="uid://q44tnul2co3f" path="res://textures/UI/down-arrow.png" id="4_ycten"]
 [ext_resource type="Script" path="res://Scripts/TutorialArrow.gd" id="5_k8y18"]
+[ext_resource type="Texture2D" uid="uid://cbp8e3d7os23g" path="res://textures/UI/emote_cash.png" id="9_f83jd"]
+[ext_resource type="Script" path="res://Scripts/neworderparticle.gd" id="11_4ur16"]
+
+[sub_resource type="GDScript" id="GDScript_42n1r"]
+script/source = "extends Button"
+
+[sub_resource type="Curve" id="Curve_e27py"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0.03125, 1), 0.0, 0.0, 0, 0, Vector2(0.296875, 2), 0.0, 0.0, 0, 0, Vector2(0.509375, 1.00806), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_cv8n1"]
+curve_y = SubResource("Curve_e27py")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ievrx"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 450.0
+emission_ring_inner_radius = 0.0
+spread = 0.0
+directional_velocity_min = 0.999984
+directional_velocity_max = 1.99998
+directional_velocity_curve = SubResource("CurveXYZTexture_cv8n1")
+gravity = Vector3(0, -2, 0)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("2_bufl8")
@@ -52,6 +79,7 @@ text = "Press me to skibidi"
 [node name="Button2" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press me to dibidi"
+script = SubResource("GDScript_42n1r")
 
 [node name="Down-arrow" type="Sprite2D" parent="CanvasLayer"]
 visible = false
@@ -74,5 +102,17 @@ tile_map_data = PackedByteArray("AAAEAAQAAwAAAAAAAAAGAAUAAwAAAAAAAAAGAAYAAwAAAAA
 tile_set = ExtResource("4_shp4t")
 metadata/_edit_lock_ = true
 
+[node name="NewOrderParticle" type="GPUParticles2D" parent="Map"]
+position = Vector2(630, 548)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_ievrx")
+texture = ExtResource("9_f83jd")
+lifetime = 4.0
+one_shot = true
+speed_scale = 4.0
+script = ExtResource("11_4ur16")
+
+[connection signal="pressed" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="Map/NewOrderParticle" method="_on_button_2_pressed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
