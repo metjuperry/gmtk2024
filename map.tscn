@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://bgjepo2ma6s1q" path="res://medievaltheme.tres" id="1_s2ytw"]
 [ext_resource type="TileSet" uid="uid://djp0cmnfn1xtl" path="res://textures/objects/tiles/tilestileset.tres" id="2_f4dlb"]
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="3_6a4h7"]
+[ext_resource type="Script" path="res://button.gd" id="2_talpa"]
 
 [node name="Node2D" type="Node2D"]
 
