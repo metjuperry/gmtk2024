@@ -1,9 +1,15 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://26owegk8hj50"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://26owegk8hj50"]
 
 [ext_resource type="Texture2D" uid="uid://cqlr4mjiylibv" path="res://textures/objects/houses/medieval_cabin.png" id="1_4gf8s"]
+[ext_resource type="Texture2D" uid="uid://d3xyidxbepe24" path="res://textures/objects/houses/medieval_openCastle.png" id="1_vlgf5"]
 [ext_resource type="Texture2D" uid="uid://c8ll4xsquq33e" path="res://textures/objects/houses/medieval_farm.png" id="2_7bj4v"]
 [ext_resource type="Texture2D" uid="uid://dk4lawyfiskjp" path="res://textures/objects/houses/medieval_house.png" id="3_chjwx"]
 [ext_resource type="Texture2D" uid="uid://bwxm118lih702" path="res://textures/objects/houses/medieval_windmill.png" id="4_ll1si"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5dim"]
+texture = ExtResource("1_vlgf5")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uot8"]
 texture = ExtResource("1_4gf8s")
@@ -32,3 +38,4 @@ sources/3 = SubResource("TileSetAtlasSource_0uot8")
 sources/4 = SubResource("TileSetAtlasSource_k8atg")
 sources/5 = SubResource("TileSetAtlasSource_2jafe")
 sources/6 = SubResource("TileSetAtlasSource_oh30b")
+sources/0 = SubResource("TileSetAtlasSource_r5dim")
