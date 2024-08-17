@@ -1,6 +1,7 @@
 extends Node
 
 signal resourcesUpdated(newMoney: float, newProducts: float)
+signal peopleUpdated(newDemand: float, newSatisfaction: float)
 
 @export_group("Raw resources")
 @export var workers : int = 0;
@@ -12,6 +13,7 @@ signal resourcesUpdated(newMoney: float, newProducts: float)
 @export var workersProductivity : float = 1.0;
 @export var courierEffectivenes : float = 1.0;
 
+
 @export_group("Money")
 @export var basePricePerProduct: float = 1;
 @export_range(-20.0, 20.0) var priceModified : float = 0;
@@ -20,13 +22,18 @@ signal resourcesUpdated(newMoney: float, newProducts: float)
 
 @export_group("People")
 @export var demand : int = 0;
+@export_range(-100.0, 100.0) var satisfaction: float = 50.0;
+@export var demandMetBonus: float = 0.0;
 
-func _on_orloj_cycle_complete() -> void:
-	# Each courier working at their effectivenes, rounded up.
+@export_group("Area")
+@export var satisfactionConstant: float = 1.0;
+@export var demandConstant: float = 1.0;
+
+func recalculate_products_and_money() -> void:
+		# Each courier working at their effectivenes, rounded up.
 	var courierCapacity = ceil(couriers * courierEffectivenes);
 	# The lowest nmumber of these is the one we actually sold
 	var actuallySoldProducts = min(availableProducts, courierCapacity, demand)
-	
 	
 	# Sold products times money + (or minus) modifier
 	money += actuallySoldProducts * (basePricePerProduct + (basePricePerProduct/100.0 * priceModified ))
@@ -37,7 +44,24 @@ func _on_orloj_cycle_complete() -> void:
 	
 	# get new stock
 	availableProducts += workersProductivity;
+
+func recalcualte_satisfaction_and_demand() -> void:
+			# Each courier working at their effectivenes, rounded up.
+	var courierCapacity = ceil(couriers * courierEffectivenes);
+	# The lowest nmumber of these is the one we actually sold
+	var actuallySoldProducts = min(availableProducts, courierCapacity, demand)
+	
+	if(actuallySoldProducts >= demand):
+		satisfaction += satisfactionConstant + demandMetBonus;
+	else:
+		satisfaction -= satisfactionConstant * (100 * (actuallySoldProducts/demand));
+	demand = demandConstant + (demandConstant * (100/satisfaction)) + (demandConstant - (demandConstant/100.0 * priceModified ))
+
+func _on_orloj_cycle_complete() -> void:
+	recalcualte_satisfaction_and_demand();
+	recalculate_products_and_money();
 	
 	resourcesUpdated.emit(money, availableProducts)
+	peopleUpdated.emit(demand, satisfaction)
 	
 	return
