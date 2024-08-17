@@ -78,7 +78,15 @@ text = "Money: 0"
 
 [node name="Products" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "100"
+text = "Products: 0"
+
+[node name="Demand" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Products: 0"
+
+[node name="Satisfaction" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Products: 0"
 
 [node name="SidePanel" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 1962.0
@@ -158,9 +166,11 @@ availableProducts = 1.0
 couriers = 1
 workersProductivity = 3.0
 priceModified = 10.0
-demand = 1
+demandMetBonus = 2.0
+satisfactionConstant = 10.0
 
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
+[connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_people_updated"]
 [connection signal="resourcesUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_resources_updated"]
