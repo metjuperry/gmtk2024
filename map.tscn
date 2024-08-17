@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=3 format=3 uid="uid://d4feg1nmfcakn"]
 
-[ext_resource type="Theme" uid="uid://bgjepo2ma6s1q" path="res://medievaltheme.tres" id="1_s2ytw"]
+[ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_s2ytw"]
+[ext_resource type="Script" path="res://button.gd" id="2_talpa"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -39,6 +40,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press me to skibidi"
+script = ExtResource("2_talpa")
 
 [node name="Button2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
