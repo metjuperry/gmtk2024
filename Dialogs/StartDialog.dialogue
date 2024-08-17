@@ -14,4 +14,6 @@ Fate: Next on our task list is to remember what was you father selling?
 do ask_for_sold_goods()
 Fate: Alright. {{sold_goods}}! What a nasty little man he was.
 Fate: Lets get going by pick up the business where he left it.
+do show_tutorial_arrow()
+Fate: Click the shop building please
 => END

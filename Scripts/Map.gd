@@ -1,5 +1,7 @@
 extends Node2D
 
+signal toggleArrow(show: bool)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -31,3 +33,6 @@ func ask_for_sold_goods() -> void:
 	await name_input_dialog.confirmed
 	GameState.sold_goods = name_input_dialog.name_edit.text
 	name_input_dialog.queue_free()
+
+func show_tutorial_arrow() -> void:
+	get_node("CanvasLayer/Down-arrow").visible = true

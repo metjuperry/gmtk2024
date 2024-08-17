@@ -12,7 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
-	print(self.position)
+
 	if(self.position.x != 1288 && initializing):
 			self.position = self.position.lerp(Vector2(1288.0,self.position.y), delta * 2.0);
 	pass
