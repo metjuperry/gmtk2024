@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=21 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
 [ext_resource type="Script" path="res://Scripts/Map.gd" id="2_bufl8"]
+[ext_resource type="Script" path="res://Scripts/TopPanelManager.gd" id="2_kaplx"]
 [ext_resource type="TileSet" uid="uid://djp0cmnfn1xtl" path="res://textures/objects/tiles/tilestileset.tres" id="3_5r71k"]
 [ext_resource type="Script" path="res://Scripts/BuildingSelector.gd" id="3_6ceoe"]
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
@@ -13,6 +14,21 @@
 [ext_resource type="Texture2D" uid="uid://klbaly6dakcb" path="res://textures/UI/minimap_arrow_a.png" id="8_bnsq7"]
 [ext_resource type="Texture2D" uid="uid://cbp8e3d7os23g" path="res://textures/UI/emote_cash.png" id="9_f83jd"]
 [ext_resource type="Script" path="res://Scripts/neworderparticle.gd" id="11_4ur16"]
+[ext_resource type="Script" path="res://Scripts/ResourceCounter.gd" id="14_m63y7"]
+
+[sub_resource type="GDScript" id="GDScript_5hkqf"]
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="GDScript" id="GDScript_42n1r"]
 script/source = "extends Button"
@@ -43,11 +59,28 @@ gravity = Vector3(0, -2, 0)
 script = ExtResource("2_bufl8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="TopPanel" type="PanelContainer" parent="CanvasLayer"]
 offset_left = -2.0
 offset_right = 1915.0
 offset_bottom = 85.0
+script = ExtResource("2_kaplx")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TopPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer"]
+layout_mode = 2
+script = SubResource("GDScript_5hkqf")
+
+[node name="Money" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money: 0"
+
+[node name="Products" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "100"
 
 [node name="SidePanel" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 1962.0
@@ -92,13 +125,13 @@ texture = ExtResource("4_ycten")
 script = ExtResource("5_k8y18")
 
 [node name="Orloj" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(440, 602)
-scale = Vector2(0.5, 0.5)
+position = Vector2(503.15, 579)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_i528l")
 script = ExtResource("7_pa1x4")
 
 [node name="MinimapArrowA" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(441, 433)
+position = Vector2(504.15, 345)
 rotation = 3.14159
 scale = Vector2(3, 3)
 texture = ExtResource("8_bnsq7")
@@ -128,9 +161,17 @@ one_shot = true
 speed_scale = 4.0
 script = ExtResource("11_4ur16")
 
-[node name="Node" type="Node" parent="."]
+[node name="ResourceCounter" type="Node" parent="."]
+script = ExtResource("14_m63y7")
+workers = 1
+availableProducts = 1.0
+couriers = 1
+workersProductivity = 3.0
+priceModified = 10.0
+demand = 1
 
 [connection signal="pressed" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer/Button2" to="Map/NewOrderParticle" method="_on_button_2_pressed"]
-[connection signal="cycleComplete" from="CanvasLayer/Orloj" to="Map/NewOrderParticle" method="_on_orloj_cycle_complete"]
+[connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
+[connection signal="resourcesUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_resources_updated"]
