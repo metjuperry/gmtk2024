@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgjepo2ma6s1q"]
+
+[ext_resource type="Texture2D" uid="uid://dbcd2h5boi483" path="res://textures/UI/panel_brown_dark_corners_b.png" id="1_r82mg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j0fbd"]
+texture = ExtResource("1_r82mg")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+region_rect = Rect2(0, 0, 128, 128)
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_j0fbd")
