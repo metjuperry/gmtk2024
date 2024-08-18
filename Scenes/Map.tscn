@@ -274,19 +274,22 @@ show_percentage = false
 script = ExtResource("7_0dnfy")
 
 [node name="Down-arrow" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(707, 495)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_f83jd")
 script = ExtResource("5_k8y18")
 
 [node name="Down-arrow2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(880, 599)
+visible = false
+position = Vector2(885, 603)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_f83jd")
 script = ExtResource("5_k8y18")
 
 [node name="Down-arrow3" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(292, 406)
+visible = false
+position = Vector2(294, 395)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_f83jd")
 script = ExtResource("5_k8y18")
@@ -486,9 +489,6 @@ script = ExtResource("20_bmkcc")
 [connection signal="pressed" from="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer/Button2" to="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer/Button2" method="_on_pressed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]
-[connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
-[connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow2" method="_on_map_selected_building_changed"]
-[connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow3" method="_on_map_selected_building_changed"]
 [connection signal="gameOver" from="ResourceCounter" to="CanvasLayer/Orloj" method="_on_resource_counter_game_over"]
 [connection signal="gameOver" from="ResourceCounter" to="CanvasLayer/GameOver" method="_on_resource_counter_game_over"]
 [connection signal="moveNextPhase" from="ResourceCounter" to="." method="_on_resource_counter_move_next_phase"]
