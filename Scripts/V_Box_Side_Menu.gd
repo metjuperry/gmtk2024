@@ -39,7 +39,6 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			var newButton = Button.new()
 			newButton.text = event["Name"]
 			newButton.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			newButton.pressed.connect(Callable(tryBuyUpgrade).bind(event))
 			var newAcquisitionLabel = Label.new()
 			newAcquisitionLabel.text = "    Aqusition Cost: " + str(event["PurchaseCost"])
 			newAcquisitionLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -62,7 +61,6 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			var newButton = Button.new()
 			newButton.text = event["Name"]
 			newButton.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			newButton.pressed.connect(Callable(tryBuyUpgrade).bind(event))
 			var newAcquisitionLabel = Label.new()
 			newAcquisitionLabel.text = "    Aqusition Cost: " + str(event["Aquisition_Cost"])
 			newAcquisitionLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -86,7 +84,6 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			var newButton = Button.new()
 			newButton.text = event["Name"]
 			newButton.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			newButton.pressed.connect(Callable(tryBuyUpgrade).bind(event))
 			var newAcquisitionLabel = Label.new()
 			newAcquisitionLabel.text = "    Aqusition Cost: " + str(event["Aquisition_Cost"])
 			newAcquisitionLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -103,10 +100,17 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			add_child(newAcquisitionLabel)
 			add_child(newDailyCostLabel)
 			add_child(newproductionChangeLabel)
+			newButton.pressed.connect(Callable(tryBuyUpgrade).bind(event["Aquisition_Cost"],newButton,newAcquisitionLabel,newDailyCostLabel,newproductionChangeLabel))
+			
 		
-func tryBuyUpgrade():
+func tryBuyUpgrade(aquistionCost: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
+	if (aquistionCost >= 1): ##repalce 1 for actual current money
+		button.queue_free()
+		hidelabel1.queue_free()
+		hidelabel2.queue_free()
+		hidelabel3.queue_free()
+		##subtract money and additional effects
 	
-	pass
 	
 func getColor(number: float) -> Color:
 	if number>0:
