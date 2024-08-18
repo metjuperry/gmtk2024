@@ -4,6 +4,7 @@ signal toggleArrow(show: bool)
 signal tutorialOver()
 signal stopCycle()
 signal startCycle()
+signal enableCouriers()
 signal productNamechanged(newName: String);
 signal zoomOut()
 signal pauseGame()
@@ -43,14 +44,9 @@ func ask_for_sold_goods() -> void:
 
 func _input(event: InputEvent) -> void:
 	if(event is InputEventKey):
-		if(event.physical_keycode == KEY_SPACE):
-			stop_cycle()
-			var resource = preload("res://Dialogs/Expansion.dialogue")
-			DialogueManager.show_example_dialogue_balloon(resource,	"Expansion",)
 		if(event.physical_keycode == KEY_ESCAPE):
 			stop_cycle()
 			pauseGame.emit()
-			
 
 func zoom_out() -> void:
 	zoomOut.emit()
@@ -61,6 +57,9 @@ func start_cycle() -> void:
 func stop_cycle() -> void:
 	stopCycle.emit()
 
+func show_couriers() -> void:
+	enableCouriers.emit()
+
 func show_tutorial_arrow_backsmith() -> void:
 	get_node("CanvasLayer/Down-arrow").visible = true
 func show_tutorial_arrow_market() -> void:
@@ -69,3 +68,8 @@ func show_tutorial_arrow_recruiter() -> void:
 	get_node("CanvasLayer/Down-arrow3").visible = true
 func tutorial_over() -> void:
 	tutorialOver.emit()
+
+func _on_resource_counter_move_next_phase() -> void:
+	stop_cycle()
+	var resource = preload("res://Dialogs/Expansion.dialogue")
+	DialogueManager.show_example_dialogue_balloon(resource,	"Expansion")

@@ -6,6 +6,7 @@ var productionLabel: Label;
 var demand: Label;
 var satisfaction: Label;
 var productsPerCycleLabel: Label;
+var shippingLabel: Label;
 
 
 var moneyLabelChange: Label;
@@ -20,6 +21,7 @@ func _ready() -> void:
 	productsLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/HBoxContainer/Products");
 	productionLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductionContainer/HBoxContainer/Production");
 	demand = get_node("MarginContainer/VBoxContainer/HBoxContainer/DemandContainer/HBoxContainer/Demand");
+	shippingLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ShippingContainer/HBoxContainer/Shipping");
 	
 	moneyLabelChange = get_node("MarginContainer/VBoxContainer/HBoxContainer/MoneyContainer/MoneyCHange");
 	productsLabelChange = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/ProductsChange");
@@ -67,3 +69,8 @@ func getColor(number: float) -> Color:
 		return Color.html("#ff474c")
 	else:
 		return Color.html("#FFFFFF")
+
+
+func _on_node_2d_enable_couriers() -> void:
+	get_node("MarginContainer/VBoxContainer/HBoxContainer/ShippingContainer").visible = true
+	shippingLabel.text = "2.0";

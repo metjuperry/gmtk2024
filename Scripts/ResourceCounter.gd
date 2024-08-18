@@ -1,7 +1,12 @@
 extends Node
 
-signal resourcesUpdated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float)
+signal resourcesUpdated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: float)
 signal peopleUpdated(newDemand: float,demandChange:float, newSatisfaction: float, satisfactionChange: float)
+
+signal moveNextPhase()
+signal gameOver()
+
+var secondPhase = false;
 
 @export_group("Raw resources")
 @export var workers : int = 0;
@@ -32,8 +37,6 @@ func _ready() -> void:
 	resourcesUpdated.emit(money,0, availableProducts, 0, workersProductivity)
 	peopleUpdated.emit(demand,0, satisfaction,0)
 
-
-
 func recalculate_products_and_money() -> void:
 		# Each courier working at their effectivenes, rounded up.
 	var courierCapacity = ceil(couriers * courierEffectivenes);
@@ -53,7 +56,7 @@ func recalculate_products_and_money() -> void:
 	# get new stock
 	availableProducts += workersProductivity;
 	
-	resourcesUpdated.emit(money,money - oldMoney, availableProducts, availableProducts - oldProducts, workersProductivity)
+	resourcesUpdated.emit(money,money - oldMoney, availableProducts, availableProducts - oldProducts, workersProductivity, couriers)
 
 func recalcualte_satisfaction_and_demand() -> void:
 			# Each courier working at their effectivenes, rounded up.
@@ -67,11 +70,16 @@ func recalcualte_satisfaction_and_demand() -> void:
 	if(actuallySoldProducts >= demand):
 		satisfaction += satisfactionConstant + demandMetBonus;
 	else:
-		satisfaction -= satisfactionConstant * (actuallySoldProducts/demand);
+		satisfaction +=  -satisfactionConstant * (actuallySoldProducts/demand);
 		
 	if(satisfaction <= 0):
-		# game over
+		gameOver.emit()
 		return
+	
+	if(satisfaction >= 95 && !secondPhase):
+		secondPhase = true;
+		moveNextPhase.emit();
+	
 	demand = demandConstant + (demandConstant * (satisfaction/20)) + (demandConstant - (demandConstant/100.0 * priceModified ))
 
 	peopleUpdated.emit(demand,demand - oldDemand, satisfaction,satisfaction - oldSatisfaction)
@@ -84,3 +92,6 @@ func _on_orloj_cycle_complete() -> void:
 
 func _on_v_box_container_change_money(ammount: float) -> void:
 	money += ammount
+
+func _on_node_2d_enable_couriers() -> void:
+	couriers = 2;

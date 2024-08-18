@@ -46,10 +46,10 @@ texture = ExtResource("4_yfc0s")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 630.0
-offset_top = 634.0
-offset_right = 995.0
-offset_bottom = 850.0
+offset_left = 537.0
+offset_top = 530.0
+offset_right = 1013.0
+offset_bottom = 902.0
 scale = Vector2(1.38776, 1.41374)
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
@@ -64,8 +64,14 @@ theme_override_constants/separation = 30
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits:
-- Metju - @MetjuPerry
-- Zdenda - github.com/zdeneksrejber"
+Metju - @MetjuPerry
+
+Zdenda - github.com/zdeneksrejber
+
+kenney.nl
+
+Flaticon.com:
+Vitaly Gorbachev, Smashicons, Freepik, witdhawaty"
 
 [node name="Back" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -5,6 +5,10 @@ Order: Hello! I'd like a few {{sold_goods}} please! Do you ship to different tow
 do zoom_out()
 {{player_name}}: Oh boy, looks like I have to invest in some shipping.
 Fate: You bet you do! Here's how shiping works
-{{player_name}}: I get it. Let's go then!
+do show_couriers()
+Fate: From now on, you have limited ammount of couriers that can carry {{sold_goods}} for you!
+Fate: Even if you make enough to meet the demand, you need enough hands to get it to your customers!
+{{player_name}}: But aren't some orders still in my neighborhood? I didn't need couriers before?
+Fate: Look, I saw the upgrades you bought. Take this as karmic justice
 do start_cycle()
 => END

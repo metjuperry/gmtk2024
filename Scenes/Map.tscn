@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=40 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -13,12 +13,14 @@
 [ext_resource type="TileSet" uid="uid://26owegk8hj50" path="res://textures/objects/houses/buildings.tres" id="4_shp4t"]
 [ext_resource type="Texture2D" uid="uid://q44tnul2co3f" path="res://textures/UI/down-arrow.png" id="4_ycten"]
 [ext_resource type="Texture2D" uid="uid://brks5e0mkieuq" path="res://textures/UI/packages.png" id="4_yt34g"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="5_cxsmf"]
 [ext_resource type="Script" path="res://Scripts/TutorialArrow.gd" id="5_k8y18"]
 [ext_resource type="Texture2D" uid="uid://bh001obqs7p7j" path="res://textures/UI/Market.png" id="5_mhhny"]
 [ext_resource type="Texture2D" uid="uid://bsfhanctpbrwm" path="res://textures/UI/banner_modern.png" id="6_2mv5r"]
 [ext_resource type="Texture2D" uid="uid://cm0mhe2fu6vco" path="res://textures/UI/orloj_sipka.png" id="6_i528l"]
 [ext_resource type="Script" path="res://Scripts/SatisfactionBar.gd" id="7_0dnfy"]
 [ext_resource type="Script" path="res://Scripts/orloj.gd" id="7_pa1x4"]
+[ext_resource type="Texture2D" uid="uid://c416gaabbt8pa" path="res://textures/UI/Shipping.png" id="8_blar7"]
 [ext_resource type="Texture2D" uid="uid://klbaly6dakcb" path="res://textures/UI/minimap_arrow_a.png" id="8_bnsq7"]
 [ext_resource type="Texture2D" uid="uid://cbp8e3d7os23g" path="res://textures/UI/emote_cash.png" id="9_f83jd"]
 [ext_resource type="Script" path="res://Scripts/neworderparticle.gd" id="11_4ur16"]
@@ -29,6 +31,7 @@
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="19_b0fxc"]
 [ext_resource type="Script" path="res://Scripts/Exitbutton.gd" id="19_g5tef"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="20_bmkcc"]
+[ext_resource type="Script" path="res://Scripts/TryAgain.gd" id="23_huemj"]
 [ext_resource type="Script" path="res://Scripts/Travelers.gd" id="23_yamdq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w8avk"]
@@ -219,6 +222,26 @@ text = "0"
 [node name="DemandChange" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/DemandContainer"]
 layout_mode = 2
 
+[node name="ShippingContainer" type="VBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ShippingContainer"]
+layout_mode = 2
+text = "Shipping"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ShippingContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ShippingContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_blar7")
+expand_mode = 3
+
+[node name="Shipping" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ShippingContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
 [node name="SidePanel" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 1962.0
 offset_top = 106.0
@@ -316,7 +339,7 @@ position = Vector2(42.94, 117.69)
 scale = Vector2(0.06, 0.065)
 texture = ExtResource("17_js058")
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -324,48 +347,99 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("19_b0fxc")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+[node name="Panel" type="Panel" parent="CanvasLayer/PauseMenu"]
 layout_mode = 0
 offset_left = -249.0
 offset_top = -135.0
 offset_right = 3372.0
 offset_bottom = 2428.0
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PauseMenu"]
 offset_left = 769.0
 offset_top = 328.0
 offset_right = 1134.0
 offset_bottom = 720.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = -1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game Paused"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Continue"
 script = ExtResource("19_8bf64")
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 script = ExtResource("19_g5tef")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 4
 text = "Credits:
 - Metju - @MetjuPerry
 - Zdenda - github.com/zdeneksrejber"
+
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_cxsmf")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GameOver"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -135.0
+offset_right = 3372.0
+offset_bottom = 2428.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameOver"]
+offset_left = 769.0
+offset_top = 328.0
+offset_right = 1134.0
+offset_bottom = 720.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameOver/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOver/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label2" type="Label" parent="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 4
+text = "Customers are too dissatisfied with your product. 
+Better luck next time! "
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Try again"
+script = ExtResource("23_huemj")
+
+[node name="Button2" type="Button" parent="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+script = ExtResource("19_g5tef")
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("3_6ceoe")
@@ -421,13 +495,14 @@ couriers = 1000
 workersProductivity = 3.0
 priceModified = 10.0
 demandMetBonus = 2.0
-satisfactionConstant = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(954, 546)
 script = ExtResource("20_bmkcc")
 
-[connection signal="pauseGame" from="." to="CanvasLayer/Control" method="_on_node_2d_pause_game"]
+[connection signal="enableCouriers" from="." to="CanvasLayer/TopPanel" method="_on_node_2d_enable_couriers"]
+[connection signal="enableCouriers" from="." to="ResourceCounter" method="_on_node_2d_enable_couriers"]
+[connection signal="pauseGame" from="." to="CanvasLayer/PauseMenu" method="_on_node_2d_pause_game"]
 [connection signal="productNamechanged" from="." to="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/Label" method="_on_node_2d_product_namechanged"]
 [connection signal="startCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_start_cycle"]
 [connection signal="startCycle" from="." to="Map/BuildingsTileMap/Travelers" method="_on_node_2d_start_cycle"]
@@ -436,15 +511,20 @@ script = ExtResource("20_bmkcc")
 [connection signal="zoomOut" from="." to="Camera2D" method="_on_node_2d_zoom_out"]
 [connection signal="changeMoney" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_money"]
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
-[connection signal="continueSignal" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Orloj" method="_on_button_continue_signal"]
-[connection signal="continueSignal" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Control" method="_on_button_continue_signal"]
-[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button2" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button2" method="_on_pressed"]
+[connection signal="continueSignal" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Orloj" method="_on_button_continue_signal"]
+[connection signal="continueSignal" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/PauseMenu" method="_on_button_continue_signal"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Button2" to="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Button2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer/Button2" to="CanvasLayer/GameOver/PanelContainer/MarginContainer/VBoxContainer/Button2" method="_on_pressed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow2" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow3" method="_on_map_selected_building_changed"]
+[connection signal="gameOver" from="ResourceCounter" to="CanvasLayer/Orloj" method="_on_resource_counter_game_over"]
+[connection signal="gameOver" from="ResourceCounter" to="CanvasLayer/GameOver" method="_on_resource_counter_game_over"]
+[connection signal="moveNextPhase" from="ResourceCounter" to="." method="_on_resource_counter_move_next_phase"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_people_updated"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_resource_counter_people_updated"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/VBoxContainer/TextureRect/ProgressBar" method="_on_resource_counter_people_updated"]

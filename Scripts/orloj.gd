@@ -37,3 +37,6 @@ func _on_node_2d_stop_cycle() -> void:
 
 func _on_button_continue_signal() -> void:
 	spin = true
+
+func _on_resource_counter_game_over() -> void:
+	spin = false
