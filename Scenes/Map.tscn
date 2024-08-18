@@ -243,9 +243,6 @@ horizontal_alignment = 1
 layout_mode = 2
 script = ExtResource("4_80x0n")
 
-[node name="Button" type="Button" parent="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 1528.0
 offset_top = 24.0
@@ -380,7 +377,11 @@ script = ExtResource("20_bmkcc")
 [connection signal="stopCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_stop_cycle"]
 [connection signal="tutorialOver" from="." to="CanvasLayer/Orloj" method="_on_node_2d_tutorial_over"]
 [connection signal="zoomOut" from="." to="Camera2D" method="_on_node_2d_zoom_out"]
+[connection signal="changeDemand" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_demand"]
+[connection signal="changeIncome" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_income"]
 [connection signal="changeMoney" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_money"]
+[connection signal="changeProduction" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_production"]
+[connection signal="changeWorkerWage" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_worker_wage"]
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]

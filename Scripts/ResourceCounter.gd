@@ -84,3 +84,19 @@ func _on_orloj_cycle_complete() -> void:
 
 func _on_v_box_container_change_money(ammount: float) -> void:
 	money += ammount
+
+
+func _on_v_box_container_change_income(ammount: float) -> void:
+	priceModified += ammount
+
+
+func _on_v_box_container_change_demand(ammount: float) -> void:
+	demand += ammount
+
+
+func _on_v_box_container_change_production(ammount: float) -> void:
+	workersProductivity += ammount
+
+
+func _on_v_box_container_change_worker_wage(ammount: float) -> void:
+	workerSalary += ammount
