@@ -8,8 +8,11 @@ Fate: Next on our task list is to remember what was you father selling?
 do ask_for_sold_goods()
 Fate: {{sold_goods}}! Interesting, back in my days owning {{sold_goods}} was considered illegal. What a new and progressive age of feudal society.
 Fate: New, lets get going by pick up your father's business where he left it. 
-do show_tutorial_arrow()
+do show_tutorial_arrow_backsmith()
 Fate: Find your father's shop and start managing it.
-Fate: Off you go.
+do show_tutorial_arrow_market()
+Fate: Good, now lets check the market.
+do show_tutorial_arrow_recruiter()
+Fate: And finally, find the recruiter office where you can hire additional workers.
 do tutorial_over()
 => END
