@@ -1,3 +1,5 @@
 ~ NotEnoughMoney
+do stop_cycle()
 Banker: Haha, you don't have enough money!
+do start_cycle()
 => END
