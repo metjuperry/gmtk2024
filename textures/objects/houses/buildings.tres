@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://26owegk8hj50"]
+[gd_resource type="TileSet" load_steps=46 format=3 uid="uid://26owegk8hj50"]
 
 [ext_resource type="Texture2D" uid="uid://cqlr4mjiylibv" path="res://textures/objects/houses/medieval_cabin.png" id="1_4gf8s"]
 [ext_resource type="Texture2D" uid="uid://d3xyidxbepe24" path="res://textures/objects/houses/medieval_openCastle.png" id="1_vlgf5"]
@@ -12,7 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://cctsae73wp1p8" path="res://textures/objects/houses/medieval_ruins.png" id="7_vlovd"]
 [ext_resource type="Texture2D" uid="uid://cjsrc3hcn8w5u" path="res://textures/objects/houses/medieval_tower.png" id="8_6fhw1"]
 [ext_resource type="Texture2D" uid="uid://b46ysb5y6m88t" path="res://textures/objects/houses/medieval_blacksmith.png" id="10_0c43h"]
+[ext_resource type="Texture2D" uid="uid://c434otwugp186" path="res://textures/objects/houses/western_bank.png" id="10_viyiv"]
+[ext_resource type="Texture2D" uid="uid://b1bf7qj8pp3xt" path="res://textures/objects/houses/western_general.png" id="11_a8y71"]
 [ext_resource type="Texture2D" uid="uid://sjhgnclxf2i8" path="res://textures/objects/houses/medieval_church.png" id="13_gw0sh"]
+[ext_resource type="Texture2D" uid="uid://c81b5if82ud1n" path="res://textures/objects/houses/western_indians.png" id="13_w35qy"]
+[ext_resource type="Texture2D" uid="uid://0evmed68f4jl" path="res://textures/objects/houses/western_saloon.png" id="14_e85ne"]
+[ext_resource type="Texture2D" uid="uid://qn2jqob2m5d3" path="res://textures/objects/houses/western_sheriff.png" id="15_2py8x"]
+[ext_resource type="Texture2D" uid="uid://c0iuqetgnvq2m" path="res://textures/objects/houses/western_station.png" id="16_2aaj7"]
+[ext_resource type="Texture2D" uid="uid://d00eehj3etkxa" path="res://textures/objects/houses/western_watertower.png" id="17_8id2k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5dim"]
 resource_name = "Castle"
@@ -67,11 +74,46 @@ texture = ExtResource("4_ll1si")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aikor"]
+texture = ExtResource("10_viyiv")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1x53g"]
+texture = ExtResource("11_a8y71")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bf342"]
 texture = ExtResource("10_0c43h")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
 0:0/0/custom_data_0 = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw0xb"]
+texture = ExtResource("13_w35qy")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evsod"]
+texture = ExtResource("14_e85ne")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_622rb"]
+texture = ExtResource("15_2py8x")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olysq"]
+texture = ExtResource("16_2aaj7")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0agga"]
+texture = ExtResource("17_8id2k")
+texture_region_size = Vector2i(118, 140)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uot8"]
 resource_name = "Cabin"
@@ -136,3 +178,10 @@ sources/14 = SubResource("TileSetAtlasSource_yoyha")
 sources/15 = SubResource("TileSetAtlasSource_h7sir")
 sources/16 = SubResource("TileSetAtlasSource_dc887")
 sources/17 = SubResource("TileSetAtlasSource_cu3kq")
+sources/18 = SubResource("TileSetAtlasSource_aikor")
+sources/19 = SubResource("TileSetAtlasSource_1x53g")
+sources/20 = SubResource("TileSetAtlasSource_dw0xb")
+sources/21 = SubResource("TileSetAtlasSource_evsod")
+sources/22 = SubResource("TileSetAtlasSource_622rb")
+sources/23 = SubResource("TileSetAtlasSource_olysq")
+sources/24 = SubResource("TileSetAtlasSource_0agga")

@@ -2,6 +2,10 @@ extends Node2D
 
 signal toggleArrow(show: bool)
 signal tutorialOver()
+signal stopCycle()
+signal startCycle()
+signal productNamechanged(newName: String);
+signal zoomOut()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +37,26 @@ func ask_for_sold_goods() -> void:
 	name_input_dialog.popup_centered()
 	await name_input_dialog.confirmed
 	GameState.sold_goods = name_input_dialog.name_edit.text
+	productNamechanged.emit(GameState.sold_goods)
 	name_input_dialog.queue_free()
+
+func _input(event: InputEvent) -> void:
+	if(event is InputEventKey):
+		if(event.physical_keycode == KEY_SPACE):
+			stop_cycle()
+			var resource = preload("res://Dialogs/Expansion.dialogue")
+			DialogueManager.show_example_dialogue_balloon(resource,	"Expansion",)
+			
+
+func zoom_out() -> void:
+	zoomOut.emit()
+
+func start_cycle() -> void:
+	startCycle.emit()
+	
+
+func stop_cycle() -> void:
+	stopCycle.emit()
 
 func show_tutorial_arrow_backsmith() -> void:
 	get_node("CanvasLayer/Down-arrow").visible = true
