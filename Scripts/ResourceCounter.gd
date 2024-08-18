@@ -1,6 +1,6 @@
 extends Node
 
-signal resourcesUpdated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: float)
+signal resourcesUpdated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: int)
 signal peopleUpdated(newDemand: float,demandChange:float, newSatisfaction: float, satisfactionChange: float)
 
 signal moveNextPhase()

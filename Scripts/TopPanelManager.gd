@@ -31,7 +31,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float) -> void:
+func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: int) -> void:
 	if(moneyChange != 0):
 		moneyLabelChange.text ="+ " + str(moneyChange).pad_decimals(2) if moneyChange > 0 else str(moneyChange).pad_decimals(2);
 		moneyLabelChange.add_theme_color_override("font_color",getColor(moneyChange));
