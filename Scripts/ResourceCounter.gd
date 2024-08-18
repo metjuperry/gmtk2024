@@ -115,6 +115,9 @@ func _on_v_box_container_change_areas_satisfaction(amount: float) -> void:
 	
 func _process(delta: float) -> void:
 	GameState.currentMoney = money
+	GameState.currentInStock = availableProducts
+	GameState.currentProduction = workersProductivity
+	GameState.currentDemand = demand
 
 func _on_node_2d_enable_couriers() -> void:
 	couriers = 2;

@@ -459,6 +459,7 @@ availableProducts = 1.0
 couriers = 1000
 workersProductivity = 3.0
 priceModified = 10.0
+demand = 1
 demandMetBonus = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]

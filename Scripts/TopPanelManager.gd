@@ -32,6 +32,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	moneyLabel.text = str(GameState.currentMoney).pad_decimals(2)
+	productionLabel.text = str(GameState.currentProduction).pad_decimals(2)
+	productsLabel.text = str(GameState.currentInStock).pad_decimals(2)
+	demand.text = str(GameState.currentDemand).pad_decimals(2)
 
 func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: int) -> void:
 	if(moneyChange != 0):
@@ -39,16 +42,12 @@ func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float,
 		moneyLabelChange.add_theme_color_override("font_color",getColor(moneyChange));
 	else:
 		moneyLabelChange.text = "";
-	moneyLabel.text = str(newMoney).pad_decimals(2);
 	
 	if(productsChange != 0):
 		productsLabelChange.text = "+ " + str(productsChange).pad_decimals(2) if productsChange > 0 else str(productsChange).pad_decimals(2);
 		productsLabelChange.add_theme_color_override("font_color",getColor(productsChange))
 	else:
 		productsLabelChange.text = ""
-	productsLabel.text = str(newProducts).pad_decimals(2);
-
-	productionLabel.text = str(workerProductivity).pad_decimals(2);
 
 	pass # Replace with function body.
 
