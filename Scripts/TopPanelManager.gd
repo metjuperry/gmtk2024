@@ -30,6 +30,8 @@ func _ready() -> void:
 	
 	pass # Replace with function body.
 
+func _process(delta: float) -> void:
+	moneyLabel.text = str(GameState.currentMoney).pad_decimals(2)
 
 func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: int) -> void:
 	if(moneyChange != 0):

@@ -14,8 +14,3 @@ func _process(delta: float) -> void:
 	
 	self.position.y = self.position.y + sin(time * 8)
 	pass
-
-
-func _on_map_selected_building_changed(newSelectedBuilding: int) -> void:
-	self.visible = false
-	pass # Replace with function body.
