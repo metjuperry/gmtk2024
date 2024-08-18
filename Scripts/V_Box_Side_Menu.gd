@@ -5,6 +5,7 @@ signal changeWorkerWage(ammount: float)
 signal changeProduction(ammount: float)
 signal changeDemand(ammount: float)
 signal changeIncome(ammount: float)
+signal changeAreasSatisfaction(amount: float)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,6 +51,7 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			newAcquisitionLabel.add_theme_color_override("font_color",getInvertedColor(event["PurchaseCost"]))
 			add_child(newButton)
 			add_child(newAcquisitionLabel)
+			var labels: Array
 			for effect in event["Effects"]:
 				var newEfectLabel = Label.new()
 				newEfectLabel.text = "    "+ str(effect["Type"]) +": " + str(effect["Change"])
@@ -59,6 +61,8 @@ func renderButtons(newSelectedBuilding: int) -> void:
 				else:
 					newEfectLabel.add_theme_color_override("font_color",getColor(effect["Change"]))
 				add_child(newEfectLabel)
+			newButton.pressed.connect(Callable(tryBuyMarketItem).bind(event["PurchaseCost"],newButton,newAcquisitionLabel))
+
 	if(newSelectedBuilding == 2):
 		currentBuilding = 2
 		clearChildren()
@@ -82,6 +86,7 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			add_child(newAcquisitionLabel)
 			add_child(newDailyCostLabel)
 			add_child(newproductionChangeLabel)
+			newButton.pressed.connect(Callable(tryBuyWorkshopItem).bind(event["Aquisition_Cost"],event["Cost_Per_Cycle"],event["Cycle_Production_Change"],newButton,newAcquisitionLabel,newDailyCostLabel,newproductionChangeLabel))
 	if(newSelectedBuilding == 3):
 		currentBuilding = 3
 		clearChildren()
@@ -109,17 +114,51 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			
 		
 func tryBuyWorker(aquistionCost: float, workerWage: float, productionChange: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
+	print(GameState.currentMoney)
+	var currentMoney = GameState.currentMoney
+	if(aquistionCost <= currentMoney):
+		button.queue_free()
+		hidelabel1.queue_free()
+		hidelabel2.queue_free()
+		hidelabel3.queue_free()
+		changeMoney.emit(-aquistionCost)
+		changeProduction.emit(productionChange)
+		changeWorkerWage.emit(workerWage)
+	else:
+		var resource = preload("res://Dialogs/NotEnoghtMoney.dialogue")
+		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
 	
-	button.queue_free()
-	hidelabel1.queue_free()
-	hidelabel2.queue_free()
-	hidelabel3.queue_free()
-	changeMoney.emit(-aquistionCost)
-	changeProduction.emit(productionChange)
-	changeWorkerWage.emit(workerWage)
+func tryBuyWorkshopItem(aquistionCost: float, incomeChange: float, productionChange: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
+	print(GameState.currentMoney)
+	var currentMoney = GameState.currentMoney
+	if(aquistionCost <= currentMoney):
+		button.queue_free()
+		hidelabel1.queue_free()
+		hidelabel2.queue_free()
+		hidelabel3.queue_free()
+		changeMoney.emit(-aquistionCost)
+		changeProduction.emit(productionChange)
+		changeIncome.emit(incomeChange)
+	else:
+		var resource = preload("res://Dialogs/NotEnoghtMoney.dialogue")
+		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
+		
+func tryBuyMarketItem(aquistionCost: float, hideNodes: Array, compatitorChange: float, demandChange: float, areaSatisfactionChange: float, revenueChange: float):
+	print(GameState.currentMoney)
+	var currentMoney = GameState.currentMoney
+	if(aquistionCost <= currentMoney):
+		for node in hideNodes:
+			node.queue_free()
+		changeMoney.emit(-aquistionCost)
+		changeDemand.emit(-compatitorChange)
+		changeDemand.emit(demandChange)
+		changeAreasSatisfaction.emit(areaSatisfactionChange)
+		changeIncome.emit(revenueChange)
+		
+	else:
+		var resource = preload("res://Dialogs/NotEnoghtMoney.dialogue")
+		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
 
-	
-	
 func getColor(number: float) -> Color:
 	if number>0:
 		return Color.html("#39e75f")

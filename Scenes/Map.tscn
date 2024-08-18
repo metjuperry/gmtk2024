@@ -329,6 +329,7 @@ offset_right = 3372.0
 offset_bottom = 2428.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 769.0
 offset_top = 328.0
 offset_right = 1134.0
@@ -431,6 +432,7 @@ script = ExtResource("20_bmkcc")
 [connection signal="stopCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_stop_cycle"]
 [connection signal="tutorialOver" from="." to="CanvasLayer/Orloj" method="_on_node_2d_tutorial_over"]
 [connection signal="zoomOut" from="." to="Camera2D" method="_on_node_2d_zoom_out"]
+[connection signal="changeAreasSatisfaction" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_areas_satisfaction"]
 [connection signal="changeDemand" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_demand"]
 [connection signal="changeIncome" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_income"]
 [connection signal="changeMoney" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_money"]

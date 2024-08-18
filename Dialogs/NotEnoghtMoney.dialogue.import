@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://6psrp2hjwp8t"
+path="res://.godot/imported/NotEnoghtMoney.dialogue-dee77d61316da507a65512bf764cd89b.tres"
+
+[deps]
+
+source_file="res://Dialogs/NotEnoghtMoney.dialogue"
+dest_files=["res://.godot/imported/NotEnoghtMoney.dialogue-dee77d61316da507a65512bf764cd89b.tres"]
+
+[params]
+
+defaults=true
