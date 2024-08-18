@@ -51,7 +51,7 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			newAcquisitionLabel.add_theme_color_override("font_color",getInvertedColor(event["PurchaseCost"]))
 			add_child(newButton)
 			add_child(newAcquisitionLabel)
-			var labels: Array
+			var nodes: Array = [newButton,newAcquisitionLabel]
 			var competitorChange: float = 0
 			var areaSatisfactionChange: float = 0
 			var demandChange: float = 0
@@ -75,8 +75,8 @@ func renderButtons(newSelectedBuilding: int) -> void:
 				else:
 					newEfectLabel.add_theme_color_override("font_color",getColor(effect["Change"]))
 				add_child(newEfectLabel)
-				labels.push_back(newEfectLabel)
-			newButton.pressed.connect(Callable(tryBuyMarketItem).bind(event["PurchaseCost"],[newButton,newAcquisitionLabel],competitorChange,demandChange,areaSatisfactionChange,revenueChange))
+				nodes.push_back(newEfectLabel)
+			newButton.pressed.connect(Callable(tryBuyMarketItem).bind(event["PurchaseCost"],nodes,competitorChange,demandChange,areaSatisfactionChange,revenueChange))
 
 	if(newSelectedBuilding == 2):
 		currentBuilding = 2
@@ -129,9 +129,7 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			
 		
 func tryBuyWorker(aquistionCost: float, workerWage: float, productionChange: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
-	print(GameState.currentMoney)
-	var currentMoney = GameState.currentMoney
-	if(aquistionCost <= currentMoney):
+	if(aquistionCost <= GameState.currentMoney):
 		button.queue_free()
 		hidelabel1.queue_free()
 		hidelabel2.queue_free()
@@ -144,9 +142,7 @@ func tryBuyWorker(aquistionCost: float, workerWage: float, productionChange: flo
 		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
 	
 func tryBuyWorkshopItem(aquistionCost: float, incomeChange: float, productionChange: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
-	print(GameState.currentMoney)
-	var currentMoney = GameState.currentMoney
-	if(aquistionCost <= currentMoney):
+	if(aquistionCost <= GameState.currentMoney):
 		button.queue_free()
 		hidelabel1.queue_free()
 		hidelabel2.queue_free()
@@ -159,9 +155,7 @@ func tryBuyWorkshopItem(aquistionCost: float, incomeChange: float, productionCha
 		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
 		
 func tryBuyMarketItem(aquistionCost: float, hideNodes: Array, compatitorChange: float, demandChange: float, areaSatisfactionChange: float, revenueChange: float):
-	print(GameState.currentMoney)
-	var currentMoney = GameState.currentMoney
-	if(aquistionCost <= currentMoney):
+	if(aquistionCost <= GameState.currentMoney):
 		for node in hideNodes:
 			node.queue_free()
 		changeMoney.emit(-aquistionCost)
