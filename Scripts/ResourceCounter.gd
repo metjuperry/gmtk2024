@@ -1,6 +1,6 @@
 extends Node
 
-signal resourcesUpdated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float)
+signal resourcesUpdated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float)
 signal peopleUpdated(newDemand: float,demandChange:float, newSatisfaction: float, satisfactionChange: float)
 
 @export_group("Raw resources")
@@ -12,7 +12,6 @@ signal peopleUpdated(newDemand: float,demandChange:float, newSatisfaction: float
 @export_group("Weights")
 @export var workersProductivity : float = 1.0;
 @export var courierEffectivenes : float = 1.0;
-
 
 @export_group("Money")
 @export var basePricePerProduct: float = 1;
@@ -28,6 +27,11 @@ signal peopleUpdated(newDemand: float,demandChange:float, newSatisfaction: float
 @export_group("Area")
 @export var satisfactionConstant: float = 1.0;
 @export var demandConstant: float = 1.0;
+
+func _ready() -> void:
+	resourcesUpdated.emit(money,0, availableProducts, 0, workersProductivity)
+	peopleUpdated.emit(demand,0, satisfaction,0)
+
 
 func recalculate_products_and_money() -> void:
 		# Each courier working at their effectivenes, rounded up.
@@ -48,8 +52,8 @@ func recalculate_products_and_money() -> void:
 	# get new stock
 	availableProducts += workersProductivity;
 	
-	resourcesUpdated.emit(money,money - oldMoney, availableProducts, availableProducts - oldProducts)
-	
+	resourcesUpdated.emit(money,money - oldMoney, availableProducts, availableProducts - oldProducts, workersProductivity)
+
 
 func recalcualte_satisfaction_and_demand() -> void:
 			# Each courier working at their effectivenes, rounded up.
@@ -70,7 +74,7 @@ func recalcualte_satisfaction_and_demand() -> void:
 		return
 	demand = demandConstant + (demandConstant * (satisfaction/20)) + (demandConstant - (demandConstant/100.0 * priceModified ))
 
-	peopleUpdated.emit(demand, oldDemand - demand, satisfaction, oldSatisfaction - satisfaction)
+	peopleUpdated.emit(demand,demand - oldDemand, satisfaction,satisfaction - oldSatisfaction)
 
 func _on_orloj_cycle_complete() -> void:
 	recalcualte_satisfaction_and_demand();
