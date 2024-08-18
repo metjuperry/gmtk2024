@@ -11,3 +11,6 @@ var currentInStock : float
 var currentProduction: float
 var currentDemand: float
 var currentCouriers: float
+
+var currentPricePerUnit : float
+var currentSalary : float

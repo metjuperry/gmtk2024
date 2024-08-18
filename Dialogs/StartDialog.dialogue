@@ -1,18 +1,22 @@
 ~ StartDialog
 Fate: Your father has passed away due to poor hygiene, your mother left for another merchant in neighboring village and all of your 14 siblings have been recruited to army and saloons. 
-Fate: It's now your responsibility to take care of your fathers' business and making.
-Fate: With so much trauma, its now your chance to change who you are, so what is your name?
+Fate: It's now your responsibility to take care of your fathers' business.
+Fate: With so much trauma, its now your chance to make a name for yourself.
+Fate: Wait... what IS your name?
 do ask_for_name()
 Fate: Hi {{player_name}}! It is nice to meet you.
-Fate: Next on our task list is to remember what was you father selling?
+Fate: Next on our task list is to remember: what was you father selling?
 do ask_for_sold_goods()
-Fate: {{sold_goods}}! Interesting, back in my days owning {{sold_goods}} was considered illegal. What a new and progressive age of feudal society.
-Fate: New, lets get going by pick up your father's business where he left it. 
+Fate: {{sold_goods}}! Interesting, back in my days selling {{sold_goods}} was considered illegal. What a new and progressive age of feudal society.
+Fate: Now, lets get going by picking up your father's business where he left it. 
 do show_tutorial_arrow_backsmith()
 Fate: Find your father's shop and start managing it.
 do show_tutorial_arrow_market()
 Fate: Good, now lets check the market.
 do show_tutorial_arrow_recruiter()
 Fate: And finally, find the recruiter office where you can hire additional workers.
+Fate: Your fathers biggest goal was to satisfy as many people as possible!
+Fate: ...
+Fate: He even said something great happens when you do!
 do tutorial_over()
 => END

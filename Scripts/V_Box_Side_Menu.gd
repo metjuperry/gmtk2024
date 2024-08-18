@@ -6,6 +6,7 @@ signal changeProduction(ammount: float)
 signal changeDemand(ammount: float)
 signal changeIncome(ammount: float)
 signal changeAreasSatisfaction(amount: float)
+signal changeCourierWage(amount: float)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 var hireArray: Array
 var markerArray: Array
 var workshopArray: Array
+var courierArray: Array
 var currentBuilding: int
 
 func loadEvents() -> void:
@@ -28,6 +30,7 @@ func loadEvents() -> void:
 	markerArray = eventData["Events"]["Market"]
 	workshopArray = eventData["Events"]["Workshop"]
 	hireArray = eventData["Events"]["Hiring"]
+	courierArray = eventData["Events"]["Shipping"]
 	
 func _on_map_selected_building_changed(newSelectedBuilding: int) -> void:	
 	renderButtons(newSelectedBuilding)
@@ -77,7 +80,6 @@ func renderButtons(newSelectedBuilding: int) -> void:
 				add_child(newEfectLabel)
 				nodes.push_back(newEfectLabel)
 			newButton.pressed.connect(Callable(tryBuyMarketItem).bind(event["PurchaseCost"],nodes,competitorChange,demandChange,areaSatisfactionChange,revenueChange))
-
 	if(newSelectedBuilding == 2):
 		currentBuilding = 2
 		clearChildren()
@@ -126,7 +128,26 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			add_child(newDailyCostLabel)
 			add_child(newproductionChangeLabel)
 			newButton.pressed.connect(Callable(tryBuyWorker).bind(event["Aquisition_Cost"],event["Cost_Per_Cycle"],event["Cycle_Production_Change"],newButton,newAcquisitionLabel,newDailyCostLabel,newproductionChangeLabel))
-			
+	if(newSelectedBuilding == 4):
+		currentBuilding = 4
+		clearChildren()
+		for event in courierArray.slice(0,3):
+			var newButton = Button.new()
+			newButton.text = event["Name"]
+			newButton.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			var newAcquisitionLabel = Label.new()
+			newAcquisitionLabel.text = "    Aqusition Cost: " + str(event["Aquisition_Cost"])
+			newAcquisitionLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+			newAcquisitionLabel.add_theme_color_override("font_color",getInvertedColor(event["Aquisition_Cost"]))
+			var newDailyCostLabel = Label.new()
+			newDailyCostLabel.text = "    Daily Expenses: " + str(event["Cost_Per_Cycle"])
+			newDailyCostLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+			newDailyCostLabel.add_theme_color_override("font_color",getInvertedColor(event["Cost_Per_Cycle"]))
+			add_child(newButton)
+			add_child(newAcquisitionLabel)
+			add_child(newDailyCostLabel)
+			newButton.pressed.connect(Callable(tryBuyCourier).bind(event["Aquisition_Cost"],event["Cost_Per_Cycle"],newButton,newAcquisitionLabel,newDailyCostLabel))
+
 		
 func tryBuyWorker(aquistionCost: float, workerWage: float, productionChange: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
 	if(aquistionCost <= GameState.currentMoney):
@@ -140,7 +161,18 @@ func tryBuyWorker(aquistionCost: float, workerWage: float, productionChange: flo
 	else:
 		var resource = preload("res://Dialogs/NotEnoghtMoney.dialogue")
 		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
-	
+
+func tryBuyCourier(aquistionCost: float, courierWage: float, button: Button, hidelabel1: Label, hidelabel2: Label): 
+	if(aquistionCost <= GameState.currentMoney):
+		button.queue_free()
+		hidelabel1.queue_free()
+		hidelabel2.queue_free()
+		changeMoney.emit(-aquistionCost)
+		changeCourierWage.emit(courierWage)
+	else:
+		var resource = preload("res://Dialogs/NotEnoghtMoney.dialogue")
+		DialogueManager.show_example_dialogue_balloon(resource,	"NotEnoughMoney",)
+
 func tryBuyWorkshopItem(aquistionCost: float, incomeChange: float, productionChange: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
 	if(aquistionCost <= GameState.currentMoney):
 		button.queue_free()

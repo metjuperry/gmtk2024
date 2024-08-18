@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=35 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -7,7 +7,6 @@
 [ext_resource type="TileSet" uid="uid://djp0cmnfn1xtl" path="res://textures/objects/tiles/tilestileset.tres" id="3_5r71k"]
 [ext_resource type="Script" path="res://Scripts/BuildingSelector.gd" id="3_6ceoe"]
 [ext_resource type="Texture2D" uid="uid://c4pe0mf56i5rf" path="res://textures/UI/Money.png" id="3_udwv6"]
-[ext_resource type="Texture2D" uid="uid://d1nqk3nmm2ivw" path="res://textures/UI/salary.png" id="4_0brus"]
 [ext_resource type="Script" path="res://Scripts/ProductLabel.gd" id="4_4krv8"]
 [ext_resource type="Script" path="res://Scripts/V_Box_Side_Menu.gd" id="4_80x0n"]
 [ext_resource type="Texture2D" uid="uid://chopja41mnj1x" path="res://textures/UI/Production.png" id="4_qs0t4"]
@@ -16,8 +15,6 @@
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="5_cxsmf"]
 [ext_resource type="Script" path="res://Scripts/TutorialArrow.gd" id="5_k8y18"]
 [ext_resource type="Texture2D" uid="uid://bh001obqs7p7j" path="res://textures/UI/Market.png" id="5_mhhny"]
-[ext_resource type="Script" path="res://Scripts/PricePerUnit.gd" id="5_rak8p"]
-[ext_resource type="Texture2D" uid="uid://6ep2anmonvbg" path="res://textures/UI/cash-flow.png" id="5_y5n4l"]
 [ext_resource type="Texture2D" uid="uid://bsfhanctpbrwm" path="res://textures/UI/banner_modern.png" id="6_2mv5r"]
 [ext_resource type="Texture2D" uid="uid://cm0mhe2fu6vco" path="res://textures/UI/orloj_sipka.png" id="6_i528l"]
 [ext_resource type="Script" path="res://Scripts/SatisfactionBar.gd" id="7_0dnfy"]
@@ -101,12 +98,11 @@ theme_override_constants/margin_left = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = -40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer"]
 layout_direction = 2
 layout_mode = 2
-theme_override_constants/separation = 105
+theme_override_constants/separation = 120
 
 [node name="MoneyContainer" type="VBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -131,49 +127,6 @@ text = "0"
 
 [node name="MoneyCHange" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/MoneyContainer"]
 layout_mode = 2
-
-[node name="SalaryContainer" type="VBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/SalaryContainer"]
-layout_mode = 2
-text = "Salary"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/SalaryContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/SalaryContainer/HBoxContainer"]
-layout_mode = 2
-tooltip_text = "Money"
-texture = ExtResource("4_0brus")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/SalaryContainer/HBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="UnitPriceContainer" type="VBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/UnitPriceContainer"]
-layout_mode = 2
-text = "Price per product"
-script = ExtResource("5_rak8p")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/UnitPriceContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/UnitPriceContainer/HBoxContainer"]
-layout_mode = 2
-tooltip_text = "Money"
-texture = ExtResource("5_y5n4l")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/UnitPriceContainer/HBoxContainer"]
-layout_mode = 2
-text = "0"
 
 [node name="ProductsContainer" type="VBoxContainer" parent="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -513,7 +466,6 @@ availableProducts = 1.0
 couriers = 1000
 workersProductivity = 3.0
 priceModified = 10.0
-workerSalary = 1
 demand = 1
 demandMetBonus = 2.0
 
@@ -525,7 +477,6 @@ script = ExtResource("20_bmkcc")
 [connection signal="enableCouriers" from="." to="ResourceCounter" method="_on_node_2d_enable_couriers"]
 [connection signal="pauseGame" from="." to="CanvasLayer/PauseMenu" method="_on_node_2d_pause_game"]
 [connection signal="productNamechanged" from="." to="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/Label" method="_on_node_2d_product_namechanged"]
-[connection signal="productNamechanged" from="." to="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/UnitPriceContainer/Label" method="_on_node_2d_product_namechanged"]
 [connection signal="startCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_start_cycle"]
 [connection signal="startCycle" from="." to="Map/BuildingsTileMap/Travelers" method="_on_node_2d_start_cycle"]
 [connection signal="stopCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_stop_cycle"]

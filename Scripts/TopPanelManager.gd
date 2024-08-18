@@ -36,6 +36,9 @@ func _process(delta: float) -> void:
 	productsLabel.text = str(GameState.currentInStock).pad_decimals(2)
 	demand.text = str(GameState.currentDemand).pad_decimals(2)
 	shippingLabel.text = str(GameState.currentCouriers).pad_decimals(2)
+	
+	get_node("MarginContainer/VBoxContainer/HBoxContainer/SalaryContainer/HBoxContainer/Label").text = str(GameState.currentSalary).pad_decimals(2)
+	get_node("MarginContainer/VBoxContainer/HBoxContainer/UnitPriceContainer/HBoxContainer/Label").text = str(GameState.currentPricePerUnit).pad_decimals(2)
 
 func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float, couriers: int) -> void:
 	if(moneyChange != 0):

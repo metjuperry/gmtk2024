@@ -65,7 +65,9 @@ func show_tutorial_arrow_backsmith() -> void:
 func show_tutorial_arrow_market() -> void:
 	get_node("Map/Down-arrow2").visible = true
 func show_tutorial_arrow_recruiter() -> void:
-	get_node("Map/Down-arrow").visible = true
+	get_node("Map/Down-arrow3").visible = true
+func show_tutorial_arrow_courier() -> void:
+	get_node("Map/Down-arrow4").visible = true
 func tutorial_over() -> void:
 	tutorialOver.emit()
 

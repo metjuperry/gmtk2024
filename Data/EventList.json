@@ -188,6 +188,38 @@
 				]
 			}
 		],
+		"Shipping": [
+			{
+				"Name": "Hire a traveling donkey",
+				"Aquisition_Cost": 0.15,
+				"Cost_Per_Cycle": 0,
+			},
+			{
+				"Name": "Traveling salesman",
+				"Aquisition_Cost": 1,
+				"Cost_Per_Cycle": 0.2,
+			},
+			{
+				"Name": "Hire a beginner courier",
+				"Aquisition_Cost": 0.7,
+				"Cost_Per_Cycle": 0.15,
+			},
+			{
+				"Name": "Hire a letter boy",
+				"Aquisition_Cost": 0.6,
+				"Cost_Per_Cycle": 0.1,
+			},
+			{
+				"Name": "Hire a fast courier",
+				"Aquisition_Cost": 1.5,
+				"Cost_Per_Cycle": 0.8,
+			},
+			{
+				"Name": "Hire a skilled courier",
+				"Aquisition_Cost": 2,
+				"Cost_Per_Cycle": 1,
+			}
+		],
 		"Hiring": [
 			{
 				"Name": "Acquire a slave",
