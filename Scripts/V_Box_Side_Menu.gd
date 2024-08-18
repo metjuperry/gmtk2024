@@ -52,16 +52,31 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			add_child(newButton)
 			add_child(newAcquisitionLabel)
 			var labels: Array
+			var competitorChange: float = 0
+			var areaSatisfactionChange: float = 0
+			var demandChange: float = 0
+			var revenueChange: float = 0
 			for effect in event["Effects"]:
 				var newEfectLabel = Label.new()
 				newEfectLabel.text = "    "+ str(effect["Type"]) +": " + str(effect["Change"])
 				newEfectLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 				if(str(effect["Type"])=="Competitors"):
 					newEfectLabel.add_theme_color_override("font_color",getInvertedColor(effect["Change"]))
+					competitorChange += effect["Change"]
+				elif(str(effect["Type"])=="Demand"):
+					newEfectLabel.add_theme_color_override("font_color",getColor(effect["Change"]))
+					competitorChange += effect["Change"]
+				elif(str(effect["Type"])=="AreaSatisfaction"):
+					newEfectLabel.add_theme_color_override("font_color",getColor(effect["Change"]))
+					areaSatisfactionChange += effect["Change"]
+				elif(str(effect["Type"])=="Revenue"):
+					newEfectLabel.add_theme_color_override("font_color",getColor(effect["Change"]))
+					revenueChange += effect["Change"]
 				else:
 					newEfectLabel.add_theme_color_override("font_color",getColor(effect["Change"]))
 				add_child(newEfectLabel)
-			newButton.pressed.connect(Callable(tryBuyMarketItem).bind(event["PurchaseCost"],newButton,newAcquisitionLabel))
+				labels.push_back(newEfectLabel)
+			newButton.pressed.connect(Callable(tryBuyMarketItem).bind(event["PurchaseCost"],[newButton,newAcquisitionLabel],competitorChange,demandChange,areaSatisfactionChange,revenueChange))
 
 	if(newSelectedBuilding == 2):
 		currentBuilding = 2
