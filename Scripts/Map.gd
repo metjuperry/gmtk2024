@@ -6,6 +6,7 @@ signal stopCycle()
 signal startCycle()
 signal productNamechanged(newName: String);
 signal zoomOut()
+signal pauseGame()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +47,9 @@ func _input(event: InputEvent) -> void:
 			stop_cycle()
 			var resource = preload("res://Dialogs/Expansion.dialogue")
 			DialogueManager.show_example_dialogue_balloon(resource,	"Expansion",)
+		if(event.physical_keycode == KEY_ESCAPE):
+			stop_cycle()
+			pauseGame.emit()
 			
 
 func zoom_out() -> void:
@@ -54,7 +58,6 @@ func zoom_out() -> void:
 func start_cycle() -> void:
 	startCycle.emit()
 	
-
 func stop_cycle() -> void:
 	stopCycle.emit()
 

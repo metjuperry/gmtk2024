@@ -34,3 +34,6 @@ func _on_node_2d_start_cycle() -> void:
 
 func _on_node_2d_stop_cycle() -> void:
 	spin = false;
+
+func _on_button_continue_signal() -> void:
+	spin = true

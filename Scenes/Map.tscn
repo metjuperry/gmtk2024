@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cv5f0ahbh8td3"]
+[gd_scene load_steps=37 format=4 uid="uid://cv5f0ahbh8td3"]
 
 [ext_resource type="Theme" uid="uid://bjugpjd8tpq0u" path="res://medievaltheme.tres" id="1_rpyo6"]
 [ext_resource type="Script" path="res://Scripts/SidePanel.gd" id="2_bpw5m"]
@@ -25,6 +25,9 @@
 [ext_resource type="Script" path="res://Scripts/ResourceCounter.gd" id="14_m63y7"]
 [ext_resource type="Texture2D" uid="uid://dptyrsbqalmis" path="res://textures/character.png" id="14_wihq4"]
 [ext_resource type="Texture2D" uid="uid://b2qx5m35hr5kn" path="res://textures/UI/arrows.png" id="17_js058"]
+[ext_resource type="Script" path="res://Scripts/ResumeButton.gd" id="19_8bf64"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="19_b0fxc"]
+[ext_resource type="Script" path="res://Scripts/Exitbutton.gd" id="19_g5tef"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="20_bmkcc"]
 [ext_resource type="Script" path="res://Scripts/Travelers.gd" id="23_yamdq"]
 
@@ -313,6 +316,57 @@ position = Vector2(42.94, 117.69)
 scale = Vector2(0.06, 0.065)
 texture = ExtResource("17_js058")
 
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_b0fxc")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -249.0
+offset_top = -135.0
+offset_right = 3372.0
+offset_bottom = 2428.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+offset_left = 769.0
+offset_top = 328.0
+offset_right = 1134.0
+offset_bottom = 720.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+script = ExtResource("19_8bf64")
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+script = ExtResource("19_g5tef")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 4
+text = "Credits:
+- Metju - @MetjuPerry
+- Zdenda - github.com/zdeneksrejber"
+
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("3_6ceoe")
 metadata/_edit_lock_ = true
@@ -323,9 +377,8 @@ tile_set = ExtResource("3_5r71k")
 metadata/_edit_lock_ = true
 
 [node name="BuildingsTileMap" type="TileMapLayer" parent="Map"]
-tile_map_data = PackedByteArray("AAAEAAQAAwAAAAAAAAAGAAUABAAAAAAAAAAGAAYAAQAAAAAAAAABAAcABAAAAAAAAAACAAQADAAAAAAAAAAIAAUABgAAAAAAAAAHAAMABAAAAAAAAAAFAAMACwAAAAAAAAAGAAMADgAAAAAAAAAHAAQABAAAAAAAAAAGAAQAAwAAAAAAAAAFAAUAAgAAAAAAAAAFAAQAAwAAAAAAAAAEAAMACAAAAAAAAAAEAAUAAwAAAAAAAAAJAAQABgAAAAAAAAAIAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYAAAAAAAAAAAAFAAYAAwAAAAAAAAAIAAYAAwAAAAAAAAAHAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAFAAcAAwAAAAAAAAAKAAcAEAAAAAAAAAAPAAQADQAAAAAAAAAJAAEADwAAAAAAAAAEAAYABAAAAAAAAAALAAwAGAAAAAAAAAALAA0AEwAAAAAAAAAMAA0AFgAAAAAAAAANAAwAEwAAAAAAAAAOAAwAFgAAAAAAAAALAA4AFwAAAAAAAAALAA8AFgAAAAAAAAAMAA4AEwAAAAAAAAAMAA8AFQAAAAAAAAANAA0AFQAAAAAAAAANAA4AEwAAAAAAAAAOAA4AEwAAAAAAAAAOAA8AFAAAAAAAAAAPAAwAFAAAAAAAAAAJAA8AFAAAAAAAAAAVAA0AFAAAAAAAAAAXAAkAFAAAAAAAAAANAA8AFgAAAAAAAAAJAA0AEgAAAAAAAAAKABEAGAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAQAAwAAAAAAAAAGAAUABAAAAAAAAAAGAAYAAQAAAAAAAAABAAcABAAAAAAAAAACAAQADAAAAAAAAAAIAAUABgAAAAAAAAAHAAMABAAAAAAAAAAFAAMACwAAAAAAAAAGAAMADgAAAAAAAAAHAAQABAAAAAAAAAAGAAQAAwAAAAAAAAAFAAUAAgAAAAAAAAAFAAQAAwAAAAAAAAAEAAMACAAAAAAAAAAEAAUAAwAAAAAAAAAJAAQABgAAAAAAAAAIAAQABgAAAAAAAAAHAAUABgAAAAAAAAAHAAYAAAAAAAAAAAAFAAYAAwAAAAAAAAAIAAYAAwAAAAAAAAAHAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAFAAcAAwAAAAAAAAAKAAcAEAAAAAAAAAAPAAQADQAAAAAAAAAJAAEADwAAAAAAAAAEAAYABAAAAAAAAAAJAA8AFAAAAAAAAAAVAA0AFAAAAAAAAAAXAAkAFAAAAAAAAAALAA0AFwAAAAAAAAAMAA0AEwAAAAAAAAAMAA4AFgAAAAAAAAANAAwAFgAAAAAAAAANAA0AEwAAAAAAAAANAA4AFQAAAAAAAAAOAAwAFQAAAAAAAAAOAA4AFgAAAAAAAAALAAsAGAAAAAAAAAAMAAwAEwAAAAAAAAANAAsAEwAAAAAAAAAOAAsAFgAAAAAAAAAOAA0AEwAAAAAAAAAPAA4AFAAAAAAAAAAPAAsAFAAAAAAAAAAKAAwAEgAAAAAAAAAMABAAGAAAAAAAAAA=")
 tile_set = ExtResource("4_shp4t")
-metadata/_edit_lock_ = true
 
 [node name="Living city" type="GPUParticles2D" parent="Map/BuildingsTileMap"]
 position = Vector2(779, 607)
@@ -374,6 +427,7 @@ satisfactionConstant = 10.0
 position = Vector2(954, 546)
 script = ExtResource("20_bmkcc")
 
+[connection signal="pauseGame" from="." to="CanvasLayer/Control" method="_on_node_2d_pause_game"]
 [connection signal="productNamechanged" from="." to="CanvasLayer/TopPanel/MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/Label" method="_on_node_2d_product_namechanged"]
 [connection signal="startCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_start_cycle"]
 [connection signal="startCycle" from="." to="Map/BuildingsTileMap/Travelers" method="_on_node_2d_start_cycle"]
@@ -382,6 +436,10 @@ script = ExtResource("20_bmkcc")
 [connection signal="zoomOut" from="." to="Camera2D" method="_on_node_2d_zoom_out"]
 [connection signal="changeMoney" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_money"]
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
+[connection signal="continueSignal" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Orloj" method="_on_button_continue_signal"]
+[connection signal="continueSignal" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Control" method="_on_button_continue_signal"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button2" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button2" method="_on_pressed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
