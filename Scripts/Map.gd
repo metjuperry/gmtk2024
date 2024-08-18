@@ -35,8 +35,11 @@ func ask_for_sold_goods() -> void:
 	GameState.sold_goods = name_input_dialog.name_edit.text
 	name_input_dialog.queue_free()
 
-func show_tutorial_arrow() -> void:
+func show_tutorial_arrow_backsmith() -> void:
 	get_node("CanvasLayer/Down-arrow").visible = true
-	
+func show_tutorial_arrow_market() -> void:
+	get_node("CanvasLayer/Down-arrow2").visible = true
+func show_tutorial_arrow_recruiter() -> void:
+	get_node("CanvasLayer/Down-arrow3").visible = true
 func tutorial_over() -> void:
 	tutorialOver.emit()

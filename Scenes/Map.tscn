@@ -145,6 +145,20 @@ scale = Vector2(0.204102, 0.223633)
 texture = ExtResource("4_ycten")
 script = ExtResource("5_k8y18")
 
+[node name="Down-arrow2" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(882, 546)
+scale = Vector2(0.204102, 0.223633)
+texture = ExtResource("4_ycten")
+script = ExtResource("5_k8y18")
+
+[node name="Down-arrow3" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(291, 351)
+scale = Vector2(0.204102, 0.223633)
+texture = ExtResource("4_ycten")
+script = ExtResource("5_k8y18")
+
 [node name="Orloj" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(208, 870)
 scale = Vector2(0.7, 0.7)
@@ -202,6 +216,8 @@ satisfactionConstant = 10.0
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
+[connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow2" method="_on_map_selected_building_changed"]
+[connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow3" method="_on_map_selected_building_changed"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_people_updated"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_resource_counter_people_updated"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="Map/NewOrderParticle" method="_on_resource_counter_people_updated"]
