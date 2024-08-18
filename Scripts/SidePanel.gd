@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:	
 
 	if(self.position.x != 1288 && initializing):
-			self.position = self.position.lerp(Vector2(1288.0,self.position.y), delta * 2.0);
+		self.position = self.position.lerp(Vector2(1288.0,self.position.y), delta * 2.0);
 	pass
 
 

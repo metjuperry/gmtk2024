@@ -33,6 +33,7 @@ func _ready() -> void:
 	peopleUpdated.emit(demand,0, satisfaction,0)
 
 
+
 func recalculate_products_and_money() -> void:
 		# Each courier working at their effectivenes, rounded up.
 	var courierCapacity = ceil(couriers * courierEffectivenes);
@@ -80,3 +81,6 @@ func _on_orloj_cycle_complete() -> void:
 	recalculate_products_and_money();
 	
 	return
+
+func _on_v_box_container_change_money(ammount: float) -> void:
+	money += ammount

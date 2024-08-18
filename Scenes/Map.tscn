@@ -380,6 +380,7 @@ script = ExtResource("20_bmkcc")
 [connection signal="stopCycle" from="." to="CanvasLayer/Orloj" method="_on_node_2d_stop_cycle"]
 [connection signal="tutorialOver" from="." to="CanvasLayer/Orloj" method="_on_node_2d_tutorial_over"]
 [connection signal="zoomOut" from="." to="Camera2D" method="_on_node_2d_zoom_out"]
+[connection signal="changeMoney" from="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" to="ResourceCounter" method="_on_v_box_container_change_money"]
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]

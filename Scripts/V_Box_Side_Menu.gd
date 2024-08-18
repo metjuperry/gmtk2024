@@ -1,5 +1,6 @@
 extends VBoxContainer
 
+signal changeMoney(ammount: float)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -104,12 +105,17 @@ func renderButtons(newSelectedBuilding: int) -> void:
 			
 		
 func tryBuyUpgrade(aquistionCost: float, button: Button, hidelabel1: Label, hidelabel2: Label, hidelabel3: Label):
+	
+	var currentMoney = ResourceCounter.money;
+	
 	if (aquistionCost >= 1): ##repalce 1 for actual current money
 		button.queue_free()
 		hidelabel1.queue_free()
 		hidelabel2.queue_free()
 		hidelabel3.queue_free()
 		##subtract money and additional effects
+		
+		changeMoney.emit(-aquistionCost)
 	
 	
 func getColor(number: float) -> Color:
