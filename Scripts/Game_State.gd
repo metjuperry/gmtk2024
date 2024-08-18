@@ -10,3 +10,4 @@ var currentMoney: float
 var currentInStock : float
 var currentProduction: float
 var currentDemand: float
+var currentCouriers: float

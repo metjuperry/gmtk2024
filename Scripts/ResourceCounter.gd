@@ -76,7 +76,7 @@ func recalcualte_satisfaction_and_demand() -> void:
 		gameOver.emit()
 		return
 	
-	if(satisfaction >= 95 && !secondPhase):
+	if(satisfaction >= 80 && !secondPhase):
 		secondPhase = true;
 		moveNextPhase.emit();
 	
@@ -118,6 +118,7 @@ func _process(delta: float) -> void:
 	GameState.currentInStock = availableProducts
 	GameState.currentProduction = workersProductivity
 	GameState.currentDemand = demand
+	GameState.currentCouriers = couriers
 
 func _on_node_2d_enable_couriers() -> void:
 	couriers = 2;

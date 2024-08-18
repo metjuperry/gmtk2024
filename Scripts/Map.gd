@@ -61,11 +61,11 @@ func show_couriers() -> void:
 	enableCouriers.emit()
 
 func show_tutorial_arrow_backsmith() -> void:
-	get_node("CanvasLayer/Down-arrow").visible = true
+	get_node("Map/Down-arrow").visible = true
 func show_tutorial_arrow_market() -> void:
-	get_node("CanvasLayer/Down-arrow2").visible = true
+	get_node("Map/Down-arrow2").visible = true
 func show_tutorial_arrow_recruiter() -> void:
-	get_node("CanvasLayer/Down-arrow3").visible = true
+	get_node("Map/Down-arrow").visible = true
 func tutorial_over() -> void:
 	tutorialOver.emit()
 
