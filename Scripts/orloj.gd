@@ -14,7 +14,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if(!spin):
 		return
 	
@@ -28,4 +27,10 @@ func _process(delta: float) -> void:
 
 func _on_node_2d_tutorial_over() -> void:
 	spin = true;
-	pass # Replace with function body.
+
+func _on_node_2d_start_cycle() -> void:
+	spin = true;
+
+
+func _on_node_2d_stop_cycle() -> void:
+	spin = false;

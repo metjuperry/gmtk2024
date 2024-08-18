@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs7w353q65574"
-path="res://.godot/imported/coins.png-47c0bdb8c04d15ec2d40581d9dd36d42.ctex"
+uid="uid://s6mimcf80m3w"
+path="res://.godot/imported/sand_09.png-8f284554f433759649c6782ac00b51c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/coins.png"
-dest_files=["res://.godot/imported/coins.png-47c0bdb8c04d15ec2d40581d9dd36d42.ctex"]
+source_file="res://textures/objects/tiles/sand_09.png"
+dest_files=["res://.godot/imported/sand_09.png-8f284554f433759649c6782ac00b51c1.ctex"]
 
 [params]
 

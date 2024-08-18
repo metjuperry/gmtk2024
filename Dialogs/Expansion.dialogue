@@ -1,0 +1,10 @@
+~ Expansion
+{{player_name}}: What's this? Another order? But this one is....
+Order: Hello! I'd like a few {{sold_goods}} please! Do you ship to different towns?
+{{player_name}}: Different towns?
+do zoom_out()
+{{player_name}}: Oh boy, looks like I have to invest in some shipping.
+Fate: You bet you do! Here's how shiping works
+{{player_name}}: I get it. Let's go then!
+do start_cycle()
+=> END

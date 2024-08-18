@@ -54,7 +54,6 @@ func recalculate_products_and_money() -> void:
 	
 	resourcesUpdated.emit(money,money - oldMoney, availableProducts, availableProducts - oldProducts, workersProductivity)
 
-
 func recalcualte_satisfaction_and_demand() -> void:
 			# Each courier working at their effectivenes, rounded up.
 	var courierCapacity = ceil(couriers * courierEffectivenes);

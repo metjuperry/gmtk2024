@@ -16,10 +16,10 @@ var satisfactionLabelChange: Label;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	moneyLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/MoneyContainer/Money");
-	productsLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/Products");
-	productionLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductionContainer/Production");
-	demand = get_node("MarginContainer/VBoxContainer/HBoxContainer/DemandContainer/Demand");
+	moneyLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/MoneyContainer/HBoxContainer/Label");
+	productsLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/HBoxContainer/Products");
+	productionLabel = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductionContainer/HBoxContainer/Production");
+	demand = get_node("MarginContainer/VBoxContainer/HBoxContainer/DemandContainer/HBoxContainer/Demand");
 	
 	moneyLabelChange = get_node("MarginContainer/VBoxContainer/HBoxContainer/MoneyContainer/MoneyCHange");
 	productsLabelChange = get_node("MarginContainer/VBoxContainer/HBoxContainer/ProductsContainer/ProductsChange");
@@ -30,24 +30,32 @@ func _ready() -> void:
 
 
 func _on_resource_counter_resources_updated(newMoney: float, moneyChange: float, newProducts: float, productsChange: float, workerProductivity: float) -> void:
+	if(moneyChange != 0):
+		moneyLabelChange.text ="+ " + str(moneyChange).pad_decimals(2) if moneyChange > 0 else str(moneyChange).pad_decimals(2);
+		moneyLabelChange.add_theme_color_override("font_color",getColor(moneyChange));
+	else:
+		moneyLabelChange.text = "";
+	moneyLabel.text = str(newMoney).pad_decimals(2);
 	
-	moneyLabelChange.text ="+ " + str(moneyChange).pad_decimals(2) if moneyChange > 0 else str(moneyChange).pad_decimals(2);
-	moneyLabelChange.add_theme_color_override("font_color",getColor(moneyChange));
-	moneyLabel.text = "Money %s." % str(newMoney).pad_decimals(2);
-	
-	productsLabelChange.text = "+ " + str(productsChange).pad_decimals(2) if productsChange > 0 else str(productsChange).pad_decimals(2);
-	productsLabelChange.add_theme_color_override("font_color",getColor(productsChange))
-	productsLabel.text = "Products %s." % str(newProducts).pad_decimals(2);
+	if(productsChange != 0):
+		productsLabelChange.text = "+ " + str(productsChange).pad_decimals(2) if productsChange > 0 else str(productsChange).pad_decimals(2);
+		productsLabelChange.add_theme_color_override("font_color",getColor(productsChange))
+	else:
+		productsLabelChange.text = ""
+	productsLabel.text = str(newProducts).pad_decimals(2);
 
-	productionLabel.text = "Production %s." % str(workerProductivity).pad_decimals(2);
+	productionLabel.text = str(workerProductivity).pad_decimals(2);
 
 	pass # Replace with function body.
 
 
 func _on_resource_counter_people_updated(newDemand: float,demandChange:float, newSatisfaction: float, satisfactionChange: float) -> void:
-	demandLabelChange.text = "+ " + str(demandChange).pad_decimals(2) if demandChange > 0 else str(demandChange).pad_decimals(2);
-	demandLabelChange.add_theme_color_override("font_color",getColor(demandChange))
-	demand.text = "Demand %s." % str(newDemand).pad_decimals(2);
+	if(demandChange != 0):
+		demandLabelChange.text = "+ " + str(demandChange).pad_decimals(2) if demandChange > 0 else str(demandChange).pad_decimals(2);
+		demandLabelChange.add_theme_color_override("font_color",getColor(demandChange))
+	else:
+		demandLabelChange.text = ""
+	demand.text = str(newDemand).pad_decimals(2);
 
 	pass # Replace with function body.
 
