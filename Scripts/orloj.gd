@@ -4,7 +4,7 @@ signal cycleComplete()
 
 
 var spin : bool;
-@export var rotation_speed = 0.5
+@export var rotation_speed = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

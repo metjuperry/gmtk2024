@@ -40,6 +40,7 @@ texture_region_size = Vector2i(118, 140)
 texture = ExtResource("5_esjya")
 texture_region_size = Vector2i(118, 140)
 0:0/0 = 0
+0:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_12atv"]
 texture = ExtResource("6_85iaw")

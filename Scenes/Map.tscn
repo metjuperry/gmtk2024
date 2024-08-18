@@ -150,7 +150,6 @@ position = Vector2(208, 870)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_i528l")
 script = ExtResource("7_pa1x4")
-rotation_speed = 2.0
 
 [node name="MinimapArrowA" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(207, 635)
@@ -201,7 +200,9 @@ satisfactionConstant = 10.0
 [connection signal="tutorialOver" from="." to="CanvasLayer/Orloj" method="_on_node_2d_tutorial_over"]
 [connection signal="cycleComplete" from="CanvasLayer/Orloj" to="ResourceCounter" method="_on_orloj_cycle_complete"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel" method="_on_map_selected_building_changed"]
+[connection signal="selected_building_changed" from="Map" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_map_selected_building_changed"]
 [connection signal="selected_building_changed" from="Map" to="CanvasLayer/Down-arrow" method="_on_map_selected_building_changed"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_people_updated"]
+[connection signal="peopleUpdated" from="ResourceCounter" to="CanvasLayer/SidePanel/MarginContainer/VBoxContainer/VBoxContainer" method="_on_resource_counter_people_updated"]
 [connection signal="peopleUpdated" from="ResourceCounter" to="Map/NewOrderParticle" method="_on_resource_counter_people_updated"]
 [connection signal="resourcesUpdated" from="ResourceCounter" to="CanvasLayer/TopPanel" method="_on_resource_counter_resources_updated"]
